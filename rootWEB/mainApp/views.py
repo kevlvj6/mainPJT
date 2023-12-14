@@ -6,3 +6,7 @@ from django.shortcuts import render, redirect
 def login(request) :
     print('debug >>>> mainApp /login')
     return render(request, 'main/login.html')
+
+def main(request) :
+    print('debug >>>> mainApp /main')
+    return render(request, 'main/main.html')
