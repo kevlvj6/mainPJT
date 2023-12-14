@@ -1,0 +1,65 @@
+{% load static %}
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>거기! 딱 걸렸조 관리자 페이지</title>
+        <!-- Bootstrap  NiceAdmin-->
+        <link href="{% static '/resources/NiceAdmin/assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .container-grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr; /* 세 개의 열을 각각 1:2 비율로 나눔 */
+                height: 600px;
+            }
+
+            .col-1 {
+                border: 1px solid #ccc;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .col-2 {
+                border: 1px solid #ccc;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="bg-primary-light">
+        <div class="pagetitle h1" style="text-align : center; margin: 20 0px;"><b>관리자 로그인</b></div>
+        <div class="container-grid" style="margin:0 50px; background:#fff;" >
+            <div class="col-1">
+                <div class="form">
+                    아이디 <br>
+                    <input type="text" name="id" maxLength="3" required><br> <!-- 필수입력 + 3자 제한 -->
+                    <br>비밀번호 <br>
+                    <input type="text" name="pwd"><br>
+                </div>
+                <a href="#" style="font-size:10px; color:#848484;">아이디/비밀번호 찾기</a>
+                <br><button>로그인</button>
+            </div>
+            <div class="col-2">
+                <h1 style="text-align : left; margin:10 0 0 20px;">거기! 딱 걸렸조</h1>
+                <p style="text-align : left; margin:20 0 0 20px;">이 프로젝트는 YOLO v5 를 사용해서 어쩌구저쩌구 객체 탐지로 CCTV를 ㅓ쩌구저쩌구</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container" style="background:black; height:50px;">
+            <p style="color:white; text-align:center;">이것은 footer</p>
+        </div>
+
+    </footer>
+    </body>
+
+</html>
