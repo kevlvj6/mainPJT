@@ -8,25 +8,33 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-  <!-- Favicons -->
-    <link rel="icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}"  type="image/x-icon">
-    <link rel="shortcut icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}"  type="image/x-icon">
+    <!-- Favicons -->
+    <link rel="icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
 
-  <!-- Google Fonts -->
+    <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" type="text/css" />
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet" type="text/css" />
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet" type="text/css" />
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.snow.css'%}" rel="stylesheet" type="text/css" />
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.bubble.css'%}" rel="stylesheet" type="text/css" />
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet" type="text/css" />
-    <link href="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/style.css'%}" rel="stylesheet" type="text/css" />
+    <!-- Vendor CSS Files -->
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.snow.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.bubble.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/style.css'%}" rel="stylesheet"
+          type="text/css"/>
 
-  <!-- Template Main CSS File -->
-    <link href="{% static '/resources/NiceAdmin/assets/css/style.css'%}" rel="stylesheet" type="text/css" />
+    <!-- Template Main CSS File -->
+    <link href="{% static '/resources/NiceAdmin/assets/css/style.css'%}" rel="stylesheet" type="text/css"/>
 
     <style>
         body {
@@ -37,7 +45,7 @@
         .sidebar {
           position: fixed;
           top: 60px;
-          left: 0;
+          left: -300px;
           bottom: 0;
           width: 300px;
           z-index: 996;
@@ -50,141 +58,122 @@
           background-color: #fff;
         }
 
-        .sidebar a {
-          padding: 8px 8px 8px 32px;
-          text-decoration: none;
-          font-size: 18px;
-          color: #818181;
-          display: block;
-          transition: 0.3s;
+        .sidebar::-webkit-scrollbar {
+          width: 5px;
+          height: 8px;
+          background-color: #fff;
         }
 
-        .sidebar a:hover {
-          color: #f1f1f1;
+        .sidebar::-webkit-scrollbar-thumb {
+          background-color: #aab7cf;
         }
 
         .content {
-          margin-left: 250px; /* 사이드바가 나타날 때 메인 콘텐츠를 오른쪽으로 밀어줌 */
-          padding: 16px;
+          padding-left: 0; /* 초기에는 왼쪽 여백 없도록 설정 */
+          transition: padding-left 0.3s; /* 트랜지션을 추가하여 부드럽게 움직이도록 함 */
         }
 
-        .toggle-btn {
-          font-size: 20px;
-          cursor: pointer;
-          position: fixed;
-          top: 20px;
-          left: 20px;
-          z-index: 2;
+        .sidebar.active {
+          left: 0; /* active 클래스가 추가될 때 사이드바를 보이게 함 */
+        }
+
+        .content.active {
+          padding-left: 300px; /* active 클래스가 추가될 때 왼쪽 여백을 설정하여 사이드바가 나타날 때 메인 콘텐츠가 밀리도록 함 */
         }
     </style>
 
 
-
-
-
-
 </head>
 <body>
-    <header class="bg-dark text-white">
-        <div class="container">
-            <h1>CCTV 관리자 사이트</h1>
-        </div>
-    </header>
 
-    <header id="header" class="header fixed-top d-flex align-items-center">
-
+<header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-      <a href="../main" class="logo d-flex align-items-center">
-        <img src="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" alt="">
-        <span class="d-none d-lg-block">Watcher</span>
-      </a>
-      <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+        <a href="../main" class="logo d-flex align-items-center">
+            <img src="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" alt="">
+            <span class="d-none d-lg-block">Watcher</span>
+        </a>
+        <div class="bi bi-list toggle-sidebar-btn" onclick="toggleSidebar()"></div>
     </div><!-- End Logo -->
 
     <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-        <li class="nav-item pe-3">
-          <div class="nav-profile d-flex align-items-center pe-0">
-              <img src="{% static 'resources/NiceAdmin/assets/img/user.png' %}" alt="Profile">
-          </div><!-- End Profile Iamge Icon -->
-        </li><!-- End Profile Nav -->
-      </ul>
+        <ul class="d-flex align-items-center">
+            <li class="nav-item pe-3">
+                <div class="nav-profile d-flex align-items-center pe-0">
+                    <img src="{% static 'resources/NiceAdmin/assets/img/user.png' %}" alt="Profile">
+                </div><!-- End Profile Iamge Icon -->
+            </li><!-- End Profile Nav -->
+        </ul>
     </nav><!-- End Icons Navigation -->
-  </header><!-- End Header -->
+</header><!-- End Header -->
 
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link " href="../main">
-          <i class="bi bi-grid"></i>
-          <span>메인 페이지</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href="../main">
+                <i class="bi bi-grid"></i>
+                <span>메인 페이지</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>CCTV</span>
-        </a>
-      </li><!-- End Components Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>CCTV</span>
+            </a>
+        </li><!-- End Components Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>차트</span>
-        </a>
-        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
-      </li><!-- End Charts Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>고객센터</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>차트</span>
+            </a>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+        </li><!-- End Charts Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="../QNA">
+                <i class="bi bi-question-circle"></i>
+                <span>고객센터</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>로그아웃</span>
-        </a>
-      </li><!-- End Login Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="../">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>로그아웃</span>
+            </a>
+        </li><!-- End Login Page Nav -->
 
     </ul>
 
-  </aside><!-- End Sidebar-->
+</aside><!-- End Sidebar-->
 
-
-
-
-
-
-
+<div class="content mt-5" style="padding-top:20px;">
 
     <main class="container mt-4">
         <h2>CCTV 목록</h2>
         <table class="table">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>장소</th>
-                    <th>상태</th>
-                </tr>
+            <tr>
+                <th>ID</th>
+                <th>장소</th>
+                <th>상태</th>
+            </tr>
             </thead>
             <tbody>
-                <!-- CCTV 목록을 동적으로 출력하는 부분 -->
-                <tr>
-                    <td>1</td>
-                    <td>로비</td>
-                    <td>활성화</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>주차장</td>
-                    <td>비활성화</td>
-                </tr>
-                <!-- 추가적인 CCTV 항목들을 여기에 추가 -->
+            <!-- CCTV 목록을 동적으로 출력하는 부분 -->
+            <tr>
+                <td>1</td>
+                <td>로비</td>
+                <td>활성화</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>주차장</td>
+                <td>비활성화</td>
+            </tr>
+            <!-- 추가적인 CCTV 항목들을 여기에 추가 -->
             </tbody>
         </table>
         <h2>CCTV 추가</h2>
@@ -212,57 +201,62 @@
             <button type="button" class="btn btn-primary" onclick="addMemo()">메모 추가</button>
         </div>
     </main>
-    <!-- 부트스트랩 JS 및 Popper.js 추가 -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script>
-        // 메모 추가 함수
-        function addMemo() {
-            var memoContent = document.getElementById('memo').value;
-            // AJAX 등을 사용하여 서버에 메모 저장 요청을 보낼 수 있음
-            // 실제로는 Django에서 제공하는 API 또는 뷰와 연동해야 함
-        }
+</div>
+<!-- 부트스트랩 JS 및 Popper.js 추가 -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    // 메모 추가 함수
+    function addMemo() {
+        var memoContent = document.getElementById('memo').value;
+        // AJAX 등을 사용하여 서버에 메모 저장 요청을 보낼 수 있음
+        // 실제로는 Django에서 제공하는 API 또는 뷰와 연동해야 함
+    }
 
-        // 그래프 표시
-        // 실제로는 차트 라이브러리 등을 사용하여 데이터를 표현해야 함
-        // 아래는 간단한 예시
-        var salesChartData = {
-            labels: ['월', '화', '수', '목', '금', '토', '일'],
-            datasets: [{
-                label: '매출',
-                data: [50, 75, 60, 85, 70, 90, 80],
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 2,
-                fill: false
-            }, {
-                label: '방문객수',
-                data: [30, 45, 40, 60, 50, 70, 65],
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 2,
-                fill: false
-            }]
-        };
+    // 그래프 표시
+    // 실제로는 차트 라이브러리 등을 사용하여 데이터를 표현해야 함
+    // 아래는 간단한 예시
+    var salesChartData = {
+        labels: ['월', '화', '수', '목', '금', '토', '일'],
+        datasets: [{
+            label: '매출',
+            data: [50, 75, 60, 85, 70, 90, 80],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2,
+            fill: false
+        }, {
+            label: '방문객수',
+            data: [30, 45, 40, 60, 50, 70, 65],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 2,
+            fill: false
+        }]
+    };
 
-        var ctx = document.getElementById('salesChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: salesChartData,
-        });
-
-
-
+    var ctx = document.getElementById('salesChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: salesChartData,
+    });
 
 
 
 
-        function toggleSidebar() {
-          const sidebar = document.querySelector('.sidebar');
-          sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
-        }
 
 
 
-    </script>
+
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const content = document.querySelector('.content');
+
+  // 'active' 클래스를 토글하여 사이드바와 메인 콘텐츠의 위치를 조절
+  sidebar.classList.toggle('active');
+  content.classList.toggle('active');
+}
+
+
+</script>
 </body>
 </html>
