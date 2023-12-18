@@ -80,6 +80,23 @@
         .content.active {
           padding-left: 330px; /* active 클래스가 추가될 때 왼쪽 여백을 설정하여 사이드바가 나타날 때 메인 콘텐츠가 밀리도록 함 */
         }
+
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 비율을 유지하기 위한 값. 비율을 변경하려면 조절하세요. */
+            max-width: 100%; /* 부모인 card-body의 너비에 맞추기 */
+            margin-bottom: 15px; /* 필요에 따라 조절 */
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
     </style>
 
 
@@ -287,16 +304,17 @@
     <section class="section">
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
 
-                        <h5>Video Player</h5>
-
-                        <video controls>
-                            <source src="{% static 'video/화재１.mp4' %}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="{% static 'video/화재１.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
 
                         <button onclick="playNextVideo()">Play Next Video</button>
 
@@ -304,7 +322,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Recent Activity <span>| Today</span></h5>
@@ -864,6 +882,20 @@
       sidebar.classList.toggle('active');
       content.classList.toggle('active');
     }
+
+    const videoPlayer = document.querySelector('video');
+    const videoSources = ['video1.mp4', 'video2.mp4', 'video3.mp4'];
+    let currentVideoIndex = 0;
+
+    function playNextVideo() {
+      // Increment the current video index
+      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+
+      // Change the video source and play
+      videoPlayer.src = "{% static 'video/' %}" + videoSources[currentVideoIndex];
+      videoPlayer.play();
+    }
+</script>
 
 
 </script>
