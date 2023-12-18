@@ -1,0 +1,284 @@
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>CCTV 관리자 사이트</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link rel="icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.snow.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.bubble.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/style.css'%}" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- Template Main CSS File -->
+    <link href="{% static '/resources/NiceAdmin/assets/css/style.css'%}" rel="stylesheet" type="text/css"/>
+    <!-- 부트스트랩 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" integrity="...">
+    <!-- 부트스트랩 JS 및 Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            position: relative;
+            z-index: 2; /* 헤더의 레이어를 높게 설정 */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: -300px;
+            bottom: 0;
+            width: 300px;
+            z-index: 1; /* 사이드바의 레이어를 낮게 설정 */
+            transition: all 0.3s;
+            padding: 20px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #aab7cf transparent;
+            box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+            background-color: #fff;
+        }
+
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        .content {
+            margin-left: 0; /* 기본값은 0으로 설정 */
+            width: 100%; /* 기본값은 100%로 설정 */
+            transition: margin-left 0.3s, width 0.3s; /* 트랜지션 추가 */
+        }
+
+        .sidebar-open .content {
+            margin-left: 300px; /* 사이드바 열릴 때 콘텐츠를 오른쪽으로 이동 */
+            width: calc(100% - 300px); /* 사이드바 열릴 때 콘텐츠의 너비를 조절하여 축소 효과 */
+        }
+
+        .toggle-btn {
+            font-size: 20px;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+        }
+
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* 각 동영상 사이의 간격 조절 */
+        }
+
+        #video-container iframe {
+            width: calc(50% - 20px); /* 동영상의 가로 크기를 조절 */
+            height: 315px; /* 동영상의 세로 크기를 조절 */
+            margin-bottom: 20px; /* 동영상 아래 간격 조절 */
+        }
+    </style>
+</head>
+</style>
+
+
+</head>
+
+
+<body>
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="assets/img/logo.png" alt="">
+            <span class="d-none d-lg-block">Wacher</span>
+        </a>
+        <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+    </div><!-- End Search Bar -->
+</header><!-- End Header -->
+
+<div id="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8lnkG__B0yM" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/JXkzFO7cAC8" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/9rpD4kxwHyY" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/oysMHdu6eLA" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+
+<div id="cctv-list">
+    <h2>CCTV 목록</h2>
+    <a href="#" onclick="loadCCTV('cctvVideo1')">CCTV 1</a>
+    <a href="#" onclick="loadCCTV('cctvVideo2')">CCTV 2</a>
+    <a href="#" onclick="loadCCTV('cctvVideo3')">CCTV 3</a>
+    <a href="#" onclick="loadCCTV('cctvVideo4')">CCTV 4</a>
+    <a href="#" onclick="loadCCTV('cctvVideo5')">CCTV 5</a>
+    <a href="#" onclick="loadCCTV('cctvVideo6')">CCTV 6</a>
+    <a href="#" onclick="loadCCTV('cctvVideo7')">CCTV 7</a>
+    <a href="#" onclick="loadCCTV('cctvVideo8')">CCTV 8</a>
+    <a href="#" onclick="loadCCTV('cctvVideo9')">CCTV 9</a>
+    <a href="#" onclick="loadCCTV('cctvVideo10')">CCTV 10</a>
+    <a href="#" onclick="loadCCTV('cctvVideo10')">...</a>
+</div>
+
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#main-submenu">
+                <i class="bi bi-grid"></i>
+                <span>메인 페이지</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="main-submenu" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="bi bi-circle"></i><span>CCTV 목록</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="bi bi-circle"></i><span>방문객 수</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="bi bi-circle"></i><span>알림</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="charts-chartjs.html">
+                        <i class="bi bi-circle"></i><span>이상행동</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Dashboard Nav -->
+
+        <!-- CCTV 메뉴 -->
+<li class="nav-item">
+    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
+        <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+            <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>CCTV 목록</span>
+            </a>
+        </li>
+        <li>
+            <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>CCTV 화면</span>
+            </a>
+        </li>
+    </ul>
+</li><!-- End CCTV Nav -->
+
+<!-- 차트 메뉴 -->
+<li class="nav-item">
+    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#charts-nav">
+       <i class="bi bi-bar-chart"></i><span>차트</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+            <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>방문객 수</span>
+            </a>
+        </li>
+       <li>
+            <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>시간대 별 방문객 수</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="charts-chartjs.html">
+                <i class="bi bi-circle"></i><span>이전 달 대비 이상행동 감소 건수</span>
+            </a>
+        </li>
+    </ul>
+</li><!-- End Charts Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>고객센터</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-login.html">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>로그아웃</span>
+            </a>
+        </li><!-- End Login Page Nav -->
+
+    </ul>
+
+</aside><!-- End Sidebar-->
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        var content = document.querySelector('.content');
+        if (sidebar.style.left === '0px') {
+            sidebar.style.left = '-300px';
+            content.style.marginLeft = '0';
+        } else {
+            sidebar.style.left = '0';
+            content.style.marginLeft = '300px';
+ }
+    }
+
+    function loadCCTV(videoId) {
+        // 선택한 CCTV에 대한 영상을 로드하는 로직을 추가하세요.
+        // 예: document.getElementById(videoId).src = 'your_cctv_video_url.mp4';
+    }
+</script>
+</body>
+
+</html>

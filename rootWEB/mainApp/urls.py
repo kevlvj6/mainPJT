@@ -6,5 +6,5 @@ urlpatterns = [
     # http://127.0.0.1:8000/
     path("", views.login),
     path("main/", views.main),
-    path("QNA/" , views.QNA),
+    path("CCTV/" , views.CCTV),
 ]
