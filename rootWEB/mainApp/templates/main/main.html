@@ -17,6 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap" rel="stylesheet">
+
     <!-- Vendor CSS Files -->
     <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"
           type="text/css"/>
@@ -310,14 +318,14 @@
                         <h5 class="card-title">CCTV</h5>
 
                         <div class="video-container">
-                            <video controls>
-                                <source src="{% static 'video/화재１.mp4' %}" type="video/mp4">
+                            <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
+
                         </div>
 
-                        <button onclick="playNextVideo()">Play Next Video</button>
-
+                        <button onclick="playNextVideo()">Next</button>
                     </div>
                 </div>
             </div>
@@ -330,7 +338,7 @@
                         <div class="activity">
 
                             <div class="activity-item d-flex">
-                                <div class="activite-label">32 min</div>
+                                <div class="activite-label"> 32 min</div>
                                 <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                                 <div class="activity-content">
                                     Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
@@ -883,21 +891,26 @@
       content.classList.toggle('active');
     }
 
-    const videoPlayer = document.querySelector('video');
-    const videoSources = ['video1.mp4', 'video2.mp4', 'video3.mp4'];
-    let currentVideoIndex = 0;
+  const videoPlayer = document.getElementById('myVideo');
+  const videoSources = [
+    '{% static 'video/화재１.mp4' %}',
+    '{% static 'video/화재２.mp4' %}',
+    '{% static 'video/화재３.mp4' %}',  // 다음 동영상의 경로를 추가
+    // 다른 동영상들의 경로도 필요에 따라 추가
+  ];
+  let currentVideoIndex = 0;
 
-    function playNextVideo() {
-      // Increment the current video index
-      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+  function playNextVideo() {
+    console.log('playNextVideo clicked');  // 디버그용 로그 메시지
+    // Increment the current video index
+    currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
 
-      // Change the video source and play
-      videoPlayer.src = "{% static 'video/' %}" + videoSources[currentVideoIndex];
-      videoPlayer.play();
-    }
+    // Change the video source and play
+    videoPlayer.src = videoSources[currentVideoIndex];
+    videoPlayer.play();
+  }
 </script>
 
 
-</script>
 </body>
 </html>
