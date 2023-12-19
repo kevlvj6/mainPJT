@@ -145,7 +145,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
         <a href="../main" class="logo d-flex align-items-center">
-            <img src="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" alt="">
+            <img src="{% static 'resources/NiceAdmin/assets/img/logos.png' %}" alt="">
             <span class="d-none d-lg-block">Watcher</span>
         </a>
         <div class="bi bi-list toggle-sidebar-btn" onclick="toggleSidebar()"></div>
@@ -298,7 +298,7 @@
 
     <section class="section">
         <div class="row">
- <!-- 1번째 카메라 -->
+
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
@@ -306,18 +306,16 @@
 
                         <div class="video-container">
                             <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
+                                <source src="{% static 'video/파손1.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
+
                         </div>
-                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadow"
-                             role="alert">
-                            1번카메라
-                        </div>
+
                     </div>
                 </div>
             </div>
- <!-- 2번째 카메라 -->
+
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
@@ -325,65 +323,42 @@
 
                         <div class="video-container">
                             <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
+                                <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
+
                         </div>
-                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadow"
-                             role="alert">
-                            2번카메라
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
+                        <div class="video-container">
+                            <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손3.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-    <!-- 3번째 카메라 -->
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">CCTV</h5>
-
-                <div class="video-container">
-                    <video id="myVideo1" controls autoplay onended="playNextVideo()">
-                        <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadow" role="alert">
-                    3번카메라
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
+                        <img src="http://127.0.0.1:8000/detectme/"
+                             style="width: 100%; height: 80%; object-fit: contain;">
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- 4번째 카메라 -->
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">CCTV</h5>
-
-                <div class="video-container">
-                    <video id="myVideo2" controls autoplay onended="playNextVideo()">
-                        <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadow" role="alert">
-                    4번카메라
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 
         </div>
-</div>
-</div>
-</div>
-</section>
+    </section>
 </div>
 
 

@@ -1,0 +1,462 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Watcher-faq</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <link rel="icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.snow.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.bubble.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/style.css'%}" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- Template Main CSS File -->
+    <link href="{% static '/resources/NiceAdmin/assets/css/style.css'%}" rel="stylesheet" type="text/css"/>
+
+    <!-- =======================================================
+    * Template Name: NiceAdmin
+    * Updated: Nov 17 2023 with Bootstrap v5.3.2
+    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+
+        .sidebar {
+          position: fixed;
+          top: 60px;
+          left: -300px;
+          bottom: 0;
+          width: 300px;
+          z-index: 996;
+          transition: all 0.3s;
+          padding: 20px;
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: #aab7cf transparent;
+          box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+          background-color: #fff;
+        }
+
+        .sidebar::-webkit-scrollbar {
+          width: 5px;
+          height: 8px;
+          background-color: #fff;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+          background-color: #aab7cf;
+        }
+
+        .content {
+          padding-left: 0; /* 초기에는 왼쪽 여백 없도록 설정 */
+          transition: padding-left 0.3s; /* 트랜지션을 추가하여 부드럽게 움직이도록 함 */
+        }
+
+        .sidebar.active {
+          left: 0; /* active 클래스가 추가될 때 사이드바를 보이게 함 */
+        }
+
+        .content.active {
+          padding-left: 300px; /* active 클래스가 추가될 때 왼쪽 여백을 설정하여 사이드바가 나타날 때 메인 콘텐츠가 밀리도록 함 */
+        }
+
+        .search-box {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          height: 50px;
+          background-color: #fff;
+          border: 1px solid #444444;
+          border-radius: 30px;
+          transition: 0.4s ease-in-out;;
+          position: relative; /* 부모 요소의 position을 relative로 설정 */
+        }
+
+        .search-box:hover {
+            box-shadow: 0px 0px 0.5px 1px #444444;
+            width: 282px;
+        }
+
+        .search-icon {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+  transition: opacity 0.4s; /* 투명도에 대한 트랜지션 추가 */
+}
+
+.search-txt {
+  width: 0px;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 1rem;
+  line-height: 30px;
+  transition: .4s;
+}
+
+.search-box:hover {
+  box-shadow: 0px 0px 0.5px 1px #444444;
+  width: 282px;
+}
+
+.search-box:hover > .search-txt {
+  width: 240px;
+  padding: 0 6px;
+}
+        #footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    #footer .copyright,
+    #footer .credits {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="../main" class="logo d-flex align-items-center">
+            <img src="{% static 'resources/NiceAdmin/assets/img/logos.png' %}" alt="">
+            <span class="d-none d-lg-block">Watcher</span>
+        </a>
+        <div class="bi bi-list toggle-sidebar-btn" onclick="toggleSidebar()"></div>
+    </div><!-- End Logo -->
+
+    <div class="search-bar" style="padding-top:15px;">
+        <form class="search-form d-flex align-items-center">
+            <input type="text" placeholder="Search">
+            <button><i class="bi bi-search"></i></button>
+        </form>
+    </div><!-- End Search Bar -->
+
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+
+            <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li><!-- End Search Icon-->
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link nav-icon" href="" data-bs-toggle="dropdown">
+                    <i class="bi bi-bell"></i>
+                    <span class="badge bg-primary badge-number">4</span>
+                </a><!-- End Notification Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                    <li class="dropdown-header">
+                        4개의 새 소식이 있습니다.
+                        <a href=""><span class="badge rounded-pill bg-primary p-2 ms-2">모두 보기</span></a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-exclamation-circle text-warning"></i>
+                        <div>
+                            <h4>알림 1</h4>
+                            <p>-</p>
+                            <p>30 분 전</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-x-circle text-danger"></i>
+                        <div>
+                            <h4>알림 2</h4>
+                            <p>-</p>
+                            <p>1 시간 전</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-check-circle text-success"></i>
+                        <div>
+                            <h4>알림 3</h4>
+                            <p>-</p>
+                            <p>2 시간 전</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li class="notification-item">
+                        <i class="bi bi-info-circle text-primary"></i>
+                        <div>
+                            <h4>알림 4</h4>
+                            <p>-</p>
+                            <p>4 시간 전</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="dropdown-footer">
+                        <a href="#">알림 전체보기</a>
+                    </li>
+
+                </ul><!-- End Notification Dropdown Items -->
+
+            </li><!-- End Notification Nav -->
+
+            <li class="nav-item dropdown pe-3">
+
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <img src="{% static 'resources/NiceAdmin/assets/img/doldol.jpg' %}" alt="Profile"
+                         class="rounded-circle">
+                    <span class="d-none d-md-block dropdown-toggle ps-2">사용자</span>
+                </a><!-- End Profile Iamge Icon -->
+
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                        <h6>사용자</h6>
+                        <span>매장 매니저</span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <i class="bi bi-gear"></i>
+                            <span>매장 정보</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="../QNA">
+                            <i class="bi bi-question-circle"></i>
+                            <span>고객센터</span>
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="../">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>로그아웃</span>
+                        </a>
+                    </li>
+
+                </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+</header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " href="../main">
+                <i class="bi bi-grid"></i>
+                <span>메인 페이지</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <!-- CCTV 메뉴 -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
+                <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>부민동</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>해운대</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End CCTV Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>차트</span>
+            </a>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+        </li><!-- End Charts Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="../QNA">
+                <i class="bi bi-question-circle"></i>
+                <span>고객센터</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="../">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>로그아웃</span>
+            </a>
+        </li><!-- End Login Page Nav -->
+
+    </ul>
+
+</aside><!-- End Sidebar-->
+
+<div class="content mt-5" style="padding-top:20px;">
+
+    <main class="container mt-4">
+        <div class="pagetitle" style="display: flex; flex-direction: column; align-items: center; margin-bottom:30px;">
+            <img src="{% static 'resources/NiceAdmin/assets/img/logos.png' %}"
+                 style="width:50px; height:50px; padding:10px; margin-bottom:10px;" alt="">
+            <h1 style="font-family: 'Noto Sans KR', sans-serif; font-size:35px;">
+                궁금해요 Watcher?
+            </h1>
+            <div class="search-box" style="margin-top: 15px;">
+                <img src="{% static 'resources/NiceAdmin/assets/img/search icon.png' %}" alt="Search Icon"
+                     class="search-icon">
+                <input type="text" class="search-txt" name="" placeholder="문제를 설명해 주세요.">
+            </div>
+        </div>
+        <!-- End Page Title -->
+        <div class="container mx-auto">
+            <main>
+                <section class="section faq">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="card basic">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title" style="font-family: 'Noto Sans KR', sans-serif;">많이 하는
+                                        질문</h5>
+
+                                    <div>
+                                        <h6 style="font-family: 'Noto Sans KR', sans-serif;">1. 도난사고 발생시, 보상은 어떻게
+                                            되나요?</h6>
+                                        <p style="font-family: 'Gothic A1', sans-serif; font-size:15px;"> 대물 1천만원/대인
+                                            1천만원 한도 내에서
+                                            지급해드립니다. </p>
+                                    </div>
+
+                                    <div class="pt-2">
+                                        <h6 style="font-family: 'Noto Sans KR', sans-serif;">2. A/S 요청 시, 출장비가
+                                            발생되나요?</h6>
+                                        <p style="font-family: 'Gothic A1', sans-serif; font-size:15px;">A/S 접수는 별도의
+                                            출장비가 발생되지
+                                            않습니다.</p>
+                                    </div>
+
+                                    <div class="pt-2">
+                                        <h6 style="font-family: 'Noto Sans KR', sans-serif;">3. 가입 후 설치비가 있나요?</h6>
+                                        <p style="font-family: 'Gothic A1', sans-serif; font-size:15px;">개통비
+                                            35,000원(부가세포함)이 월
+                                            이용료 청구 시 합산하여 청구 됩니다.</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+
+
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
+
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/chart.js/chart.umd.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/echarts/echarts.min.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.min.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/tinymce/tinymce.min.js' %}"></script>
+        <script src="{% static '/resources/NiceAdmin/assets/vendor/php-email-form/validate.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="{% static '/resources/NiceAdmin/assets/js/main.js' %}"></script>
+
+        <script>
+
+            function toggleSidebar() {
+              const sidebar = document.querySelector('.sidebar');
+              const content = document.querySelector('.content');
+
+              // 'active' 클래스를 토글하여 사이드바와 메인 콘텐츠의 위치를 조절
+              sidebar.classList.toggle('active');
+              content.classList.toggle('active');
+            }
+
+        </script>
+
+
+</body>
+
+</html>
