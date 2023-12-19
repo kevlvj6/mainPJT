@@ -82,10 +82,22 @@
             color: #f1f1f1;
         }
 
+        .header.fixed-top {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: #fff; /* 원하는 배경색으로 수정하세요 */
+        z-index: 1000; /* 다른 요소들보다 위에 표시되도록 설정 */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    }
+
         .content {
-          padding :80 30 0 30px ;
-          transition: padding-left 0.3s; /* 트랜지션을 추가하여 부드럽게 움직이도록 함 */
-        }
+        padding-top: 80px; /* 고정된 헤더를 고려하여 콘텐츠의 상단 여백을 추가 */
+        padding-right: 30px;
+        padding-bottom: 0;
+        padding-left: 30px;
+        transition: padding-left 0.3s;
+    }
 
         .sidebar-open .content {
             margin-left: 300px; /* 사이드바 열릴 때 콘텐츠를 오른쪽으로 이동 */
@@ -101,20 +113,22 @@
             z-index: 2;
         }
 
-        <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        #video-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px; /* 각 동영상 사이의 간격 조절 */
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 비율을 유지하기 위한 값. 비율을 변경하려면 조절하세요. */
+            max-width: 100%; /* 부모인 card-body의 너비에 맞추기 */
+            margin-bottom: 15px; /* 필요에 따라 조절 */
         }
 
-        #video-container iframe {
-            width: calc(50% - 20px); /* 동영상의 가로 크기를 조절 */
-            height: 315px; /* 동영상의 세로 크기를 조절 */
-            margin-bottom: 20px; /* 동영상 아래 간격 조절 */
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
+
     </style>
 </head>
 </style>
@@ -276,63 +290,88 @@
     </nav><!-- End Icons Navigation -->
 </header><!-- End Header -->
 </body>
+<div class="content">
 
-<!--<div class="content">-->
-<!--    <div id="video-container">-->
-<!--        <iframe width="560" height="315" src="https://www.youtube.com/embed/8lnkG__B0yM" frameborder="0"-->
-<!--                allowfullscreen></iframe>-->
-<!--        <iframe width="560" height="315" src="https://www.youtube.com/embed/JXkzFO7cAC8" frameborder="0"-->
-<!--                allowfullscreen></iframe>-->
-<!--        <iframe width="560" height="315" src="https://www.youtube.com/embed/9rpD4kxwHyY" frameborder="0"-->
-<!--                allowfullscreen></iframe>-->
-<!--        <iframe width="560" height="315" src="https://www.youtube.com/embed/oysMHdu6eLA" frameborder="0"-->
-<!--                allowfullscreen></iframe>-->
-<!--    </div>-->
-<!--</div>-->
+    <section class="section">
+        <div class="row">
 
-<h1>Cameras</h1>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
 
-<video id="myVideo" controls autoplay>
-    <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+                        <div class="video-container">
+                            <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
 
-<script>
-    const videoPlayer = document.getElementById('myVideo');
-    // const videoSources = [
-    //     '{% static 'video /파손 1.mp4' %}',
-    //     '{% static 'video /파손 2.mp4' %}',  // 다음 동영상의 경로를 추가
-    //     // 다른 동영상들의 경로도 필요에 따라 추가
-    // ];
-    // let currentVideoIndex = 0;
-    //
-    // function playNextVideo() {
-    //     console.log('playNextVideo clicked');  // 디버그용 로그 메시지
-    //     // Increment the current video index
-    //     currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
-    //
-    //     // Change the video source and play
-    //     videoPlayer.src = videoSources[currentVideoIndex];
-    //     videoPlayer.play();
-    }
-</script>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
+
+                        <div class="video-container">
+                            <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
+
+                        <div class="video-container">
+                            <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">CCTV</h5>
+
+                        <div class="video-container">
+                            <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손 1.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
 
-<div id="cctv-list">
-    <h2>CCTV 목록</h2>
-    <a href="#" onclick="loadCCTV('cctvVideo1')">CCTV 1</a>
-    <a href="#" onclick="loadCCTV('cctvVideo2')">CCTV 2</a>
-    <a href="#" onclick="loadCCTV('cctvVideo3')">CCTV 3</a>
-    <a href="#" onclick="loadCCTV('cctvVideo4')">CCTV 4</a>
-    <a href="#" onclick="loadCCTV('cctvVideo5')">CCTV 5</a>
-    <a href="#" onclick="loadCCTV('cctvVideo6')">CCTV 6</a>
-    <a href="#" onclick="loadCCTV('cctvVideo7')">CCTV 7</a>
-    <a href="#" onclick="loadCCTV('cctvVideo8')">CCTV 8</a>
-    <a href="#" onclick="loadCCTV('cctvVideo9')">CCTV 9</a>
-    <a href="#" onclick="loadCCTV('cctvVideo10')">CCTV 10</a>
-    <a href="#" onclick="loadCCTV('cctvVideo10')">...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
+
 
 
 <!-- ======= Sidebar ======= -->
@@ -341,32 +380,10 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#main-submenu">
+            <a class="nav-link " href="../main">
                 <i class="bi bi-grid"></i>
-                <span>메인 페이지</span><i class="bi bi-chevron-down ms-auto"></i>
+                <span>메인 페이지</span>
             </a>
-            <ul id="main-submenu" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>CCTV 목록</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>방문객 수</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>알림</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>이상행동</span>
-                    </a>
-                </li>
-            </ul>
         </li><!-- End Dashboard Nav -->
 
         <!-- CCTV 메뉴 -->
@@ -377,52 +394,31 @@
             <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="../CCTV">
-                        <i class="bi bi-circle"></i><span>CCTV 목록</span>
+                        <i class="bi bi-circle"></i><span>부민동</span>
                     </a>
                 </li>
                 <li>
                     <a href="../CCTV">
-                        <i class="bi bi-circle"></i><span>CCTV 화면</span>
+                        <i class="bi bi-circle"></i><span>해운대</span>
                     </a>
                 </li>
             </ul>
         </li><!-- End CCTV Nav -->
-
-
-        <!-- 차트 메뉴 -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#charts-nav">
-                <i class="bi bi-bar-chart"></i><span>차트</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bar-chart"></i><span>차트</span>
             </a>
-            <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>방문객 수</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>시간대 별 방문객 수</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="charts-chartjs.html">
-                        <i class="bi bi-circle"></i><span>이전 달 대비 이상행동 감소 건수</span>
-                    </a>
-                </li>
-            </ul>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
         </li><!-- End Charts Nav -->
-
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-faq.html">
+            <a class="nav-link collapsed" href="../QNA">
                 <i class="bi bi-question-circle"></i>
                 <span>고객센터</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-login.html">
+            <a class="nav-link collapsed" href="../">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
