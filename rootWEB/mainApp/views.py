@@ -14,3 +14,7 @@ def main(request) :
 def QNA(request) :
     print('debug >>>> mainApp /QNA')
     return render(request, 'main/QNA.html')
+
+def info(request) :
+    print('debug >>>> mainApp /info')
+    return render(request, 'main/info.html')

@@ -7,4 +7,5 @@ urlpatterns = [
     path("", views.login),
     path("main/", views.main),
     path("QNA/" , views.QNA),
+    path("info/" , views.info),
 ]
