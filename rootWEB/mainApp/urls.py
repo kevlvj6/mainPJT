@@ -9,4 +9,6 @@ urlpatterns = [
     path("CCTV/", views.CCTV),
     path("QNA/", views.QNA),
     path("detectme/", views.detectme),
+    path("chart/", views.chart),
 ]
+
