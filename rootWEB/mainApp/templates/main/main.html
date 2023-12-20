@@ -93,8 +93,8 @@
             position: relative;
             overflow: hidden;
             padding-bottom: 56.25%; /* 16:9 비율을 유지하기 위한 값. 비율을 변경하려면 조절하세요. */
+            margin-bottom : 15px;
             max-width: 100%; /* 부모인 card-body의 너비에 맞추기 */
-            margin-bottom: 15px; /* 필요에 따라 조절 */
         }
 
         video {
@@ -104,6 +104,35 @@
             width: 100%;
             height: 100%;
         }
+
+            .icon-button {
+              position: relative;
+              display: inline-block;
+              padding: 10px 20px; /* 버튼의 패딩 조절 */
+              background-color: #fff; /* 버튼의 배경색 */
+              color: #4154f1; /* 버튼 텍스트 색상 */
+              text-align: center;
+              text-decoration: none;
+              font-size: 70px; /* 버튼 텍스트 크기 */
+              border: none;
+              border-radius: 10px; /* 버튼 모서리 둥글게 만들기 */
+              transition: background-color 0.3s;
+              box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+            }
+
+            .icon-button:hover {
+              background-color: #4154f1; /* 버튼에 호버 효과 시 배경색 변경 */
+              color: #fff;
+            }
+
+        .button-row {
+            display: flex;
+          }
+
+          .button-card-col-4 {
+            flex: 0 0 calc(33.333% - 20px); /* 각 카드 컬럼의 너비를 설정합니다. 여기서는 33.333%로 설정하였습니다. */
+        }
+
 
     </style>
 
@@ -115,7 +144,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
         <a href="../main" class="logo d-flex align-items-center">
-            <img src="{% static 'resources/NiceAdmin/assets/img/logos.png' %}" alt="">
+            <img src="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" alt="">
             <span class="d-none d-lg-block">Watcher</span>
         </a>
         <div class="bi bi-list toggle-sidebar-btn" onclick="toggleSidebar()"></div>
@@ -318,450 +347,176 @@
 
 </aside><!-- End Sidebar-->
 
-
 <div class="content">
-
     <section class="section">
         <div class="row">
-
-            <div class="col-lg-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">CCTV</h5>
-
-                        <div class="video-container">
-                            <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-
-                        </div>
-
-                        <button onclick="playNextVideo()">Next</button>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-lg-7">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-                        <div class="activity">
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label"> 32 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                                <div class="activity-content">
-                                    Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                        <section class="section">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <h5 class="card-title">CCTV</h5>
                                 </div>
-                            </div><!-- End activity item-->
+                                <div class="col-lg-9">
+                                    <div class="video-container">
+                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                            <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
 
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">56 min</div>
-                                <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptatem blanditiis blanditiis eveniet
+                                    </div>
+
                                 </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 hrs</div>
-                                <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                <div class="activity-content">
-                                    Voluptates corrupti molestias voluptatem
+                                <div class="col-lg-3">
+                                    <div class="video-container">
+                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                            <source src="{% static 'video/화재１.mp4' %}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="video-container">
+                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                            <source src="{% static 'video/화재２.mp4' %}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="video-container">
+                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
+                                            <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
+                                        </video>
+                                    </div>
                                 </div>
-                            </div><!-- End activity item-->
+                            </div>
+                        </section>
 
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">1 day</div>
-                                <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                                <div class="activity-content">
-                                    Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a>
-                                    tempore
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">2 days</div>
-                                <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                                <div class="activity-content">
-                                    Est sit eum reiciendis exercitationem
-                                </div>
-                            </div><!-- End activity item-->
-
-                            <div class="activity-item d-flex">
-                                <div class="activite-label">4 weeks</div>
-                                <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                                <div class="activity-content">
-                                    Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                                </div>
-                            </div><!-- End activity item-->
-
-                        </div>
+                        <button class="btn btn-primary" onclick="playNextVideo()">Next</button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Area Chart</h5>
+                        <h5 class="card-title">공지사항</h5>
 
-                        <!-- Area Chart -->
-                        <div id="areaChart"></div>
+                        <!-- Accordion without outline borders -->
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                            aria-controls="flush-collapseOne">
+                                        공지사항 1
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">내용
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                            aria-controls="flush-collapseTwo">
+                                        공지사항 2
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">내용
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingThree">
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                            aria-controls="flush-collapseThree">
+                                        공지사항 3
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                     aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">내용
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Accordion without outline borders -->
+
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <div class="button-card-col-4">
+                        <button class="icon-button">
+                            <span style="font-size:14px;">긴급 화재 신고</span>
+                            <br>
+                            <i class="ri-fire-line"></i>
+                        </button>
+                    </div>
+                    <div class="button-card-col-4">
+                        <button class="icon-button">
+                            <span style="font-size:14px;">이상 행동 신고</span>
+                            <br>
+                            <i class="bx bxs-phone-call" style="margin:17 0px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body" style="height: 350px; ">
+                        <div class="d-sm-flex justify-content-between align-items-start">
+                            <div>
+                                <h4 class="card-title card-title-dash">Performance Line Chart</h4>
+                            </div>
+                            <div id="performance-line-legend"></div>
+                        </div>
+                        <div class="chartjs-wrapper mt-5" style="height:70%; margin-bottom:20px;">
+                            <canvas id="performaneLine"></canvas>
+                        </div>
 
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
                               const series = {
                                 "monthDataSeries1": {
                                   "prices": [
-                                    8107.85,
-                                    8128.0,
-                                    8122.9,
-                                    8165.5,
-                                    8340.7,
-                                    8423.7,
-                                    8423.5,
-                                    8514.3,
-                                    8481.85,
-                                    8487.7,
-                                    8506.9,
-                                    8626.2,
-                                    8668.95,
-                                    8602.3,
-                                    8607.55,
-                                    8512.9,
-                                    8496.25,
-                                    8600.65,
-                                    8881.1,
-                                    9340.85
+                                    20,11,2,3,0,1,0,5,7,1,2,8,20,25,70,55,93,124,88,75,80,87,95,79
                                   ],
                                   "dates": [
-                                    "13 Nov 2017",
-                                    "14 Nov 2017",
-                                    "15 Nov 2017",
-                                    "16 Nov 2017",
-                                    "17 Nov 2017",
-                                    "20 Nov 2017",
-                                    "21 Nov 2017",
-                                    "22 Nov 2017",
-                                    "23 Nov 2017",
-                                    "24 Nov 2017",
-                                    "27 Nov 2017",
-                                    "28 Nov 2017",
-                                    "29 Nov 2017",
-                                    "30 Nov 2017",
-                                    "01 Dec 2017",
-                                    "04 Dec 2017",
-                                    "05 Dec 2017",
-                                    "06 Dec 2017",
-                                    "07 Dec 2017",
-                                    "08 Dec 2017"
+                                    "00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00",
+                                    "14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"
                                   ]
                                 },
                                 "monthDataSeries2": {
                                   "prices": [
-                                    8423.7,
-                                    8423.5,
-                                    8514.3,
-                                    8481.85,
-                                    8487.7,
-                                    8506.9,
-                                    8626.2,
-                                    8668.95,
-                                    8602.3,
-                                    8607.55,
-                                    8512.9,
-                                    8496.25,
-                                    8600.65,
-                                    8881.1,
-                                    9040.85,
-                                    8340.7,
-                                    8165.5,
-                                    8122.9,
-                                    8107.85,
-                                    8128.0
+                                    20,11,2,3,0,1,0,5,7,1,2,8,20,25,70,55,93,124,88,75,80,87,95,79,164,158,63,67,10,35,67,24,33,58,85,72,69,45,66,77,50,49,56,89,102,84,55,36
                                   ],
                                   "dates": [
-                                    "13 Nov 2017",
-                                    "14 Nov 2017",
-                                    "15 Nov 2017",
-                                    "16 Nov 2017",
-                                    "17 Nov 2017",
-                                    "20 Nov 2017",
-                                    "21 Nov 2017",
-                                    "22 Nov 2017",
-                                    "23 Nov 2017",
-                                    "24 Nov 2017",
-                                    "27 Nov 2017",
-                                    "28 Nov 2017",
-                                    "29 Nov 2017",
-                                    "30 Nov 2017",
-                                    "01 Dec 2017",
-                                    "04 Dec 2017",
-                                    "05 Dec 2017",
-                                    "06 Dec 2017",
-                                    "07 Dec 2017",
-                                    "08 Dec 2017"
+                                    "00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00",
+                                    "13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30"
                                   ]
                                 },
                                 "monthDataSeries3": {
                                   "prices": [
-                                    7114.25,
-                                    7126.6,
-                                    7116.95,
-                                    7203.7,
-                                    7233.75,
-                                    7451.0,
-                                    7381.15,
-                                    7348.95,
-                                    7347.75,
-                                    7311.25,
-                                    7266.4,
-                                    7253.25,
-                                    7215.45,
-                                    7266.35,
-                                    7315.25,
-                                    7237.2,
-                                    7191.4,
-                                    7238.95,
-                                    7222.6,
-                                    7217.9,
-                                    7359.3,
-                                    7371.55,
-                                    7371.15,
-                                    7469.2,
-                                    7429.25,
-                                    7434.65,
-                                    7451.1,
-                                    7475.25,
-                                    7566.25,
-                                    7556.8,
-                                    7525.55,
-                                    7555.45,
-                                    7560.9,
-                                    7490.7,
-                                    7527.6,
-                                    7551.9,
-                                    7514.85,
-                                    7577.95,
-                                    7592.3,
-                                    7621.95,
-                                    7707.95,
-                                    7859.1,
-                                    7815.7,
-                                    7739.0,
-                                    7778.7,
-                                    7839.45,
-                                    7756.45,
-                                    7669.2,
-                                    7580.45,
-                                    7452.85,
-                                    7617.25,
-                                    7701.6,
-                                    7606.8,
-                                    7620.05,
-                                    7513.85,
-                                    7498.45,
-                                    7575.45,
-                                    7601.95,
-                                    7589.1,
-                                    7525.85,
-                                    7569.5,
-                                    7702.5,
-                                    7812.7,
-                                    7803.75,
-                                    7816.3,
-                                    7851.15,
-                                    7912.2,
-                                    7972.8,
-                                    8145.0,
-                                    8161.1,
-                                    8121.05,
-                                    8071.25,
-                                    8088.2,
-                                    8154.45,
-                                    8148.3,
-                                    8122.05,
-                                    8132.65,
-                                    8074.55,
-                                    7952.8,
-                                    7885.55,
-                                    7733.9,
-                                    7897.15,
-                                    7973.15,
-                                    7888.5,
-                                    7842.8,
-                                    7838.4,
-                                    7909.85,
-                                    7892.75,
-                                    7897.75,
-                                    7820.05,
-                                    7904.4,
-                                    7872.2,
-                                    7847.5,
-                                    7849.55,
-                                    7789.6,
-                                    7736.35,
-                                    7819.4,
-                                    7875.35,
-                                    7871.8,
-                                    8076.5,
-                                    8114.8,
-                                    8193.55,
-                                    8217.1,
-                                    8235.05,
-                                    8215.3,
-                                    8216.4,
-                                    8301.55,
-                                    8235.25,
-                                    8229.75,
-                                    8201.95,
-                                    8164.95,
-                                    8107.85,
-                                    8128.0,
-                                    8122.9,
-                                    8165.5,
-                                    8340.7,
-                                    8423.7,
-                                    8423.5,
-                                    8514.3,
-                                    8481.85,
-                                    8487.7,
-                                    8506.9,
-                                    8626.2
+                                    20,11,2,3,0,1,0,5,7,1,2,8,20,25,70,55,93,124,88,75,80,87,95,79,164,158,63,67,10,35,67,24,33,58,85,72,69,45,66,77,50,49,56,89,102,84,55,36
                                   ],
                                   "dates": [
-                                    "02 Jun 2017",
-                                    "05 Jun 2017",
-                                    "06 Jun 2017",
-                                    "07 Jun 2017",
-                                    "08 Jun 2017",
-                                    "09 Jun 2017",
-                                    "12 Jun 2017",
-                                    "13 Jun 2017",
-                                    "14 Jun 2017",
-                                    "15 Jun 2017",
-                                    "16 Jun 2017",
-                                    "19 Jun 2017",
-                                    "20 Jun 2017",
-                                    "21 Jun 2017",
-                                    "22 Jun 2017",
-                                    "23 Jun 2017",
-                                    "27 Jun 2017",
-                                    "28 Jun 2017",
-                                    "29 Jun 2017",
-                                    "30 Jun 2017",
-                                    "03 Jul 2017",
-                                    "04 Jul 2017",
-                                    "05 Jul 2017",
-                                    "06 Jul 2017",
-                                    "07 Jul 2017",
-                                    "10 Jul 2017",
-                                    "11 Jul 2017",
-                                    "12 Jul 2017",
-                                    "13 Jul 2017",
-                                    "14 Jul 2017",
-                                    "17 Jul 2017",
-                                    "18 Jul 2017",
-                                    "19 Jul 2017",
-                                    "20 Jul 2017",
-                                    "21 Jul 2017",
-                                    "24 Jul 2017",
-                                    "25 Jul 2017",
-                                    "26 Jul 2017",
-                                    "27 Jul 2017",
-                                    "28 Jul 2017",
-                                    "31 Jul 2017",
-                                    "01 Aug 2017",
-                                    "02 Aug 2017",
-                                    "03 Aug 2017",
-                                    "04 Aug 2017",
-                                    "07 Aug 2017",
-                                    "08 Aug 2017",
-                                    "09 Aug 2017",
-                                    "10 Aug 2017",
-                                    "11 Aug 2017",
-                                    "14 Aug 2017",
-                                    "16 Aug 2017",
-                                    "17 Aug 2017",
-                                    "18 Aug 2017",
-                                    "21 Aug 2017",
-                                    "22 Aug 2017",
-                                    "23 Aug 2017",
-                                    "24 Aug 2017",
-                                    "28 Aug 2017",
-                                    "29 Aug 2017",
-                                    "30 Aug 2017",
-                                    "31 Aug 2017",
-                                    "01 Sep 2017",
-                                    "04 Sep 2017",
-                                    "05 Sep 2017",
-                                    "06 Sep 2017",
-                                    "07 Sep 2017",
-                                    "08 Sep 2017",
-                                    "11 Sep 2017",
-                                    "12 Sep 2017",
-                                    "13 Sep 2017",
-                                    "14 Sep 2017",
-                                    "15 Sep 2017",
-                                    "18 Sep 2017",
-                                    "19 Sep 2017",
-                                    "20 Sep 2017",
-                                    "21 Sep 2017",
-                                    "22 Sep 2017",
-                                    "25 Sep 2017",
-                                    "26 Sep 2017",
-                                    "27 Sep 2017",
-                                    "28 Sep 2017",
-                                    "29 Sep 2017",
-                                    "03 Oct 2017",
-                                    "04 Oct 2017",
-                                    "05 Oct 2017",
-                                    "06 Oct 2017",
-                                    "09 Oct 2017",
-                                    "10 Oct 2017",
-                                    "11 Oct 2017",
-                                    "12 Oct 2017",
-                                    "13 Oct 2017",
-                                    "16 Oct 2017",
-                                    "17 Oct 2017",
-                                    "18 Oct 2017",
-                                    "19 Oct 2017",
-                                    "23 Oct 2017",
-                                    "24 Oct 2017",
-                                    "25 Oct 2017",
-                                    "26 Oct 2017",
-                                    "27 Oct 2017",
-                                    "30 Oct 2017",
-                                    "31 Oct 2017",
-                                    "01 Nov 2017",
-                                    "02 Nov 2017",
-                                    "03 Nov 2017",
-                                    "06 Nov 2017",
-                                    "07 Nov 2017",
-                                    "08 Nov 2017",
-                                    "09 Nov 2017",
-                                    "10 Nov 2017",
-                                    "13 Nov 2017",
-                                    "14 Nov 2017",
-                                    "15 Nov 2017",
-                                    "16 Nov 2017",
-                                    "17 Nov 2017",
-                                    "20 Nov 2017",
-                                    "21 Nov 2017",
-                                    "22 Nov 2017",
-                                    "23 Nov 2017",
-                                    "24 Nov 2017",
-                                    "27 Nov 2017",
-                                    "28 Nov 2017"
+                                    "00:00","00:30","01:00","01:30","02:00","02:30","03:00","03:30","04:00","04:30","05:00","05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00",
+                                    "13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30","21:00","21:30","22:00","22:30","23:00","23:30"
                                   ]
                                 }
                               }
                               new ApexCharts(document.querySelector("#areaChart"), {
                                 series: [{
-                                  name: "STOCK ABC",
+                                  name: "고객 수",
                                   data: series.monthDataSeries1.prices
                                 }],
                                 chart: {
@@ -778,12 +533,12 @@
                                   curve: 'straight'
                                 },
                                 subtitle: {
-                                  text: 'Price Movements',
+                                  text: '방문 고객 현황',
                                   align: 'left'
                                 },
                                 labels: series.monthDataSeries1.dates,
                                 xaxis: {
-                                  type: 'datetime',
+                                  type: 'time',
                                 },
                                 yaxis: {
                                   opposite: true
@@ -802,11 +557,12 @@
 
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="height: 350px;">
                         <h5 class="card-title">Column Chart</h5>
 
                         <!-- Column Chart -->
                         <div id="columnChart"></div>
+
 
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
@@ -823,7 +579,7 @@
                                 }],
                                 chart: {
                                   type: 'bar',
-                                  height: 350
+                                  height: 250
                                 },
                                 plotOptions: {
                                   bar: {
@@ -863,13 +619,15 @@
                         </script>
                         <!-- End Column Chart -->
 
-
                     </div>
+
+
                 </div>
             </div>
-
         </div>
-    </section>
+
+</div>
+</section>
 
 </div>
 
@@ -893,7 +651,6 @@
 
 <script>
 
-
     function toggleSidebar() {
       const sidebar = document.querySelector('.sidebar');
       const content = document.querySelector('.content');
@@ -903,26 +660,252 @@
       content.classList.toggle('active');
     }
 
-  const videoPlayer = document.getElementById('myVideo');
-  const videoSources = [
-    '{% static 'video/화재１.mp4' %}',
-    '{% static 'video/화재２.mp4' %}',
-    '{% static 'video/화재３.mp4' %}',  // 다음 동영상의 경로를 추가
-    // 다른 동영상들의 경로도 필요에 따라 추가
-  ];
-  let currentVideoIndex = 0;
+    const videoPlayer = document.getElementById('myVideo');
+    const videoSources = [
+      '{% static 'video/화재１.mp4' %}',
+      '{% static 'video/화재２.mp4' %}',
+      '{% static 'video/화재３.mp4' %}',  // 다음 동영상의 경로를 추가
+      // 다른 동영상들의 경로도 필요에 따라 추가
+    ];
+    let currentVideoIndex = 0;
 
-  function playNextVideo() {
-    console.log('playNextVideo clicked');  // 디버그용 로그 메시지
-    // Increment the current video index
-    currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+    function playNextVideo() {
+      console.log('playNextVideo clicked');  // 디버그용 로그 메시지
+      // Increment the current video index
+      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
 
-    // Change the video source and play
-    videoPlayer.src = videoSources[currentVideoIndex];
-    videoPlayer.play();
-  }
+      // Change the video source and play
+      videoPlayer.src = videoSources[currentVideoIndex];
+      videoPlayer.play();
+    }
+
+ (function($) {
+      'use strict';
+      $(function() {
+        if ($("#performaneLine").length) {
+          var graphGradient = document.getElementById("performaneLine").getContext('2d');
+          var graphGradient2 = document.getElementById("performaneLine").getContext('2d');
+          var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+          saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+          saleGradientBg.addColorStop(1, 'rgba(26, 115, 232, 0.02)');
+          var saleGradientBg2 = graphGradient2.createLinearGradient(100, 0, 50, 150);
+          saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+          saleGradientBg2.addColorStop(1, 'rgba(0, 208, 255, 0.03)');
+          var salesTopData = {
+              labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+              datasets: [{
+                  label: 'This week',
+                  data: [100, 10, 100, 100, 100, 100, 100],
+                  backgroundColor: saleGradientBg,
+                  borderColor: [
+                      '#1F3BB3',
+                  ],
+                  borderWidth: 1.5,
+                  fill: true, // 3: no fill
+                  pointBorderWidth: 1,
+                  pointRadius: [4, 4, 4, 4, 4, 4, 4],
+                  pointHoverRadius: [2, 2, 2, 2, 2, 2, 2],
+                  pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3'],
+                  pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
+              },{
+                label: 'Last week',
+                data: [30, 150, 190, 250, 120, 150, 130],
+                backgroundColor: saleGradientBg2,
+                borderColor: [
+                    '#52CDFF',
+                ],
+                borderWidth: 1.5,
+                fill: true, // 3: no fill
+                pointBorderWidth: 1,
+                pointRadius: [4, 4, 4, 4, 4, 4, 4],
+                pointHoverRadius: [2, 2, 2, 2, 2, 2, 2],
+                pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3'],
+                pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
+            }]
+          };
+
+          var salesTopOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+              scales: {
+                  yAxes: [{
+                      gridLines: {
+                          display: true,
+                          drawBorder: false,
+                          color:"#F0F0F0",
+                          zeroLineColor: '#F0F0F0',
+                      },
+                      ticks: {
+                        beginAtZero: false,
+                        autoSkip: true,
+                        maxTicksLimit: 4,
+                        fontSize: 10,
+                        color:"#6B778C"
+                      }
+                  }],
+                  xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    ticks: {
+                      beginAtZero: false,
+                      autoSkip: true,
+                      maxTicksLimit: 7,
+                      fontSize: 10,
+                      color:"#6B778C"
+                    }
+                }],
+              },
+              legend:false,
+              legendCallback: function (chart) {
+                var text = [];
+                text.push('<div class="chartjs-legend"><ul>');
+                for (var i = 0; i < chart.data.datasets.length; i++) {
+                  console.log(chart.data.datasets[i]); // see what's inside the obj.
+                  text.push('<li>');
+                  text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                  text.push(chart.data.datasets[i].label);
+                  text.push('</li>');
+                }
+                text.push('</ul></div>');
+                return text.join("");
+              },
+
+              elements: {
+                  line: {
+                      tension: 0.4,
+                  }
+              },
+              tooltips: {
+                  backgroundColor: 'rgba(31, 59, 179, 1)',
+              }
+          }
+          var salesTop = new Chart(graphGradient, {
+              type: 'line',
+              data: salesTopData,
+              options: salesTopOptions
+          });
+          document.getElementById('performance-line-legend').innerHTML = salesTop.generateLegend();
+        }
+        if ($("#performaneLine-dark").length) {
+          var graphGradient = document.getElementById("performaneLine-dark").getContext('2d');
+          var graphGradient2 = document.getElementById("performaneLine-dark").getContext('2d');
+          var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+          saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+          saleGradientBg.addColorStop(1, 'rgba(34, 36, 55, 0.5)');
+          var saleGradientBg2 = graphGradient2.createLinearGradient(10, 0, 0, 150);
+          saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+          saleGradientBg2.addColorStop(1, 'rgba(34, 36, 55, 0.2)');
+          var salesTopDataDark = {
+              labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [50, 110, 60, 290, 200, 115, 130],
+                  backgroundColor: saleGradientBg,
+                  borderColor: [
+                      '#1F3BB3',
+                  ],
+                  borderWidth: 1.5,
+                  fill: true, // 3: no fill
+                  pointBorderWidth: 1,
+                  pointRadius: [4, 4, 4, 4, 4,4, 4],
+                  pointHoverRadius: [2, 2, 2, 2, 2,2, 2],
+                  pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3'],
+                  pointBorderColor: ['#222437','#222437','#222437','#222437','#222437','#222437','#222437'],
+              },{
+                label: '# of Votes',
+                data: [30, 150, 190, 250, 120, 150, 130],
+                backgroundColor: saleGradientBg2,
+                borderColor: [
+                    '#52CDFF',
+                ],
+                borderWidth: 1.5,
+                fill: true, // 3: no fill
+                pointBorderWidth: 1,
+                pointRadius: [4, 4, 4, 4, 4,4, 4],
+                pointHoverRadius: [2, 2, 2, 2, 2,2, 2],
+                pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF'],
+                pointBorderColor: ['#222437','#222437','#222437','#222437','#222437','#222437','#222437'],
+            }]
+          };
+
+          var salesTopOptionsDark = {
+            responsive: true,
+            maintainAspectRatio: false,
+              scales: {
+                  yAxes: [{
+                      gridLines: {
+                          display: true,
+                          drawBorder: false,
+                          color:"rgba(255,255,255,.05)",
+                          zeroLineColor: "rgba(255,255,255,.05)",
+                      },
+                      ticks: {
+                        beginAtZero: false,
+                        autoSkip: true,
+                        maxTicksLimit: 4,
+                        fontSize: 10,
+                        color:"#6B778C"
+                      }
+                  }],
+                  xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    ticks: {
+                      beginAtZero: false,
+                      autoSkip: true,
+                      maxTicksLimit: 7,
+                      fontSize: 10,
+                      color:"#6B778C"
+                    }
+                }],
+              },
+              legend:false,
+              legendCallback: function (chart) {
+                var text = [];
+                text.push('<div class="chartjs-legend"><ul>');
+                for (var i = 0; i < chart.data.datasets.length; i++) {
+                  console.log(chart.data.datasets[i]); // see what's inside the obj.
+                  text.push('<li>');
+                  text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                  text.push(chart.data.datasets[i].label);
+                  text.push('</li>');
+                }
+                text.push('</ul></div>');
+                return text.join("");
+              },
+
+              elements: {
+                  line: {
+                      tension: 0.4,
+                  }
+              },
+              tooltips: {
+                  backgroundColor: 'rgba(31, 59, 179, 1)',
+              }
+          }
+          var salesTopDark = new Chart(graphGradient, {
+              type: 'line',
+              data: salesTopDataDark,
+              options: salesTopOptionsDark
+          });
+          document.getElementById('performance-line-legend-dark').innerHTML = salesTopDark.generateLegend();
+        }
+        if ($("#datepicker-popup").length) {
+          $('#datepicker-popup').datepicker({
+            enableOnReadonly: true,
+            todayHighlight: true,
+          });
+          $("#datepicker-popup").datepicker("setDate", "0");
+        }
+
+      });
+    })(jQuery);
+
 </script>
-
 
 </body>
 </html>
