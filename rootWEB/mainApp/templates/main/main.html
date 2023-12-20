@@ -108,7 +108,8 @@
             .icon-button {
               position: relative;
               display: inline-block;
-              padding: 10px 20px; /* 버튼의 패딩 조절 */
+              padding: 20px;/* 버튼의 패딩 조절 */
+              width: 200px; /* 버튼의 가로 크기 조절 */
               background-color: #fff; /* 버튼의 배경색 */
               color: #4154f1; /* 버튼 텍스트 색상 */
               text-align: center;
@@ -126,12 +127,14 @@
             }
 
         .button-row {
-            display: flex;
-          }
+        display: flex;
+        justify-content: center;
+    }
 
-          .button-card-col-4 {
-            flex: 0 0 calc(33.333% - 20px); /* 각 카드 컬럼의 너비를 설정합니다. 여기서는 33.333%로 설정하였습니다. */
-        }
+    .button-card-col-4 {
+        margin: 0 60px; /* 적절한 간격을 주세요 */
+        width: #00px; /* 원하는 너비로 조절하세요 */
+    }
 
         #daily-activities ul {
         list-style-type: none;
@@ -314,6 +317,7 @@
     </nav><!-- End Icons Navigation -->
 </header><!-- End Header -->
 
+
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
@@ -326,12 +330,24 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
+        <!-- CCTV 메뉴 -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>CCTV</span>
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
+                <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-        </li><!-- End Components Nav -->
-
+            <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>부민동</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>해운대</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End CCTV Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>차트</span>
@@ -360,46 +376,32 @@
     <section class="section">
         <div class="row">
 
-            <div class="col-lg-7">
+            <!-- 네 번째 이미지 섹션 -->
+           <div class="content">
+    <section class="section">
+        <div class="row">
+
+            <!-- 네 번째 이미지 섹션 -->
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <section class="section">
-                            <div class="row">
-                                <div class="col-lg-9">
-                                    <h5 class="card-title">CCTV</h5>
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="video-container">
-                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                            <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="video-container">
-                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                            <source src="{% static 'video/화재１.mp4' %}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                    <div class="video-container">
-                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                            <source src="{% static 'video/화재２.mp4' %}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                    <div class="video-container">
-                                        <video id="myVideo" controls autoplay onended="playNextVideo()">
-                                            <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <button class="btn btn-primary" onclick="playNextVideo()">Next</button>
+                        <img src="http://127.0.0.1:8000/detectme/" class="img-fluid" data-bs-toggle="modal"
+                             data-bs-target="#imageModal">
                     </div>
+                    <!-- 아래 부분 주석 처리 (비활성화) -->
+                    <!--
+                    <div class="d-flex justify-content-between align-items-center alert alert-secondary alert-dismissible fade show"
+                         role="alert">
+                        <span>4번 카메라</span>
+                        <div class="d-flex align-items-center">
+                            <button class="button-class" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#imageModal">
+                                <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" width="20"
+                                     height="20">
+                            </button>
+                        </div>
+                    </div>
+                    -->
                 </div>
             </div>
 
@@ -425,14 +427,14 @@
                 <div class="button-row">
                     <div class="button-card-col-4">
                         <button class="icon-button">
-                            <span style="font-size:14px;">긴급 화재 신고</span>
+                            <span style="font-size:15px;">긴급 화재 신고</span>
                             <br>
                             <i class="ri-fire-line"></i>
                         </button>
                     </div>
                     <div class="button-card-col-4">
                         <button class="icon-button">
-                            <span style="font-size:14px;">이상 행동 신고</span>
+                            <span style="font-size:15px;">이상 행동 신고</span>
                             <br>
                             <i class="bx bxs-phone-call" style="margin:17 0px;"></i>
                         </button>
