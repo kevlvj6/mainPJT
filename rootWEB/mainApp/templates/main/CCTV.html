@@ -81,6 +81,7 @@
             display: block;
             transition: 0.3s;
         }
+
 /* 그림자 스타일 */
 .shadowed-alert {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 색 및 크기 조절 가능 */
@@ -90,17 +91,7 @@
 .shadowed-alert {
     margin-bottom: 10px; /* 나타날 그림자에 따라 조절 가능 */
 }
-/* 부모 요소에 대한 스타일 */
-.d-flex.align-items-center {
-    position: relative; /* 자식 요소를 상대적으로 배치하기 위해 부모 요소에 상대적 위치 지정 */
-}
 
-/* 자식 요소에 대한 스타일 */
-.button-class img {
-    position: absolute; /* 상대적으로 위치 지정된 부모에 대해 절대적 위치 지정 */
-    top: -25px;
-    left: 670px; /* 원하는 위치로 조절, 필요에 따라 조절 가능 */
-}
         .sidebar a:hover {
             color: #f1f1f1;
         }
@@ -156,8 +147,15 @@
         }
 
         .shadow {
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
     }
+
+        .menu-icon {
+    width: 20px; /* 원하는 폭으로 조정 */
+    height: 20px; /* 원하는 높이로 조정 */
+    /* 추가적인 스타일이 필요하다면 여기에 추가 */
+}
+
 
     </style>
 </head>
@@ -297,7 +295,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="../CCTV">
+                        <a class="dropdown-item d-flex align-items-center" href="../QNA">
                             <i class="bi bi-question-circle"></i>
                             <span>고객센터</span>
                         </a>
@@ -319,250 +317,299 @@
         </ul>
     </nav><!-- End Icons Navigation -->
 </header><!-- End Header -->
+
 </body>
 <div class="content">
 
     <section class="section">
         <div class="row">
-           <!-- 첫 번째 동영상 섹션 -->
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-body">
-            <div class="video-container">
-                <video id="myVideo1" controls autoplay onended="playNextVideo()">
-                    <source src="{% static 'video/파손1.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-             <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
+            <!-- 첫 번째 동영상 섹션 -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="video-container">
+                            <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손1.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
                              role="alert">
-                <span>1번 카메라</span>
-                <div class="d-flex align-items-center">
-                    <button class="button-class" type="button" data-bs-toggle="modal" data-bs-target="#videoModal1">
-                        <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" width="20" height="20">
-                    </button>
+                            <span>1번 카메라</span>
+                            <div class="d-flex align-items-center justify-content-end"
+                                 style="position: absolute; top: 10px; right: 10px;">
+                                <button class="button-class" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#videoModal1">
+                                    <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu"
+                                         class="menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- 모달 -->
-<div class="modal fade" id="videoModal1" tabindex="-1" aria-labelledby="videoModalLabel1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel1">동영상 팝업</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <video id="popupVideo1" controls style="width: 100%; height: auto;">
-                    <source src="{% static 'video/파손1.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-</div>
+            <!-- 모달 -->
+            <div class="modal fade" id="videoModal1" tabindex="-1" aria-labelledby="videoModalLabel1"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="videoModalLabel1">CCTV</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
+                            <div class="video-container"
+                                 style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
+                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                    <source src="{% static 'video/파손1.mp4' %}" type="video/mp4"
+                                            style="display: block; margin: 0 auto;">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
 
-<!-- 두 번째 동영상 섹션 -->
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-body">
-            <div class="video-container">
-                <video id="myVideo2" controls autoplay onended="playNextVideo()">
-                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
-                             role="alert">
-                <span>2번 카메라</span>
-                <div class="d-flex align-items-center">
-                    <button class="button-class" type="button" data-bs-toggle="modal" data-bs-target="#videoModal2">
-                        <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" width="20" height="20">
-                    </button>
+                            <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
+                                <p>설명이다</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- 모달 -->
-<div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel2" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel2">2번 카메라</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <video id="popupVideo2" controls style="width: 100%; height: auto;">
-                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- 세 번째 동영상 섹션 -->
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-body">
-            <div class="video-container">
-                <video id="myVideo3" controls autoplay onended="playNextVideo()">
-                    <source src="{% static 'video/파손3.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-           <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
+            <!-- 두 번째 동영상 섹션 -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="video-container">
+                            <video id="myVideo2" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
                              role="alert">
-                <span>3번 카메라</span>
-                <div class="d-flex align-items-center">
-                    <button class="button-class" type="button" data-bs-toggle="modal" data-bs-target="#videoModal3">
-                        <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" width="20" height="20">
-                    </button>
+                            <span>2번 카메라</span>
+                            <div class="d-flex align-items-center justify-content-end"
+                                 style="position: absolute; top: 10px; right: 10px;">
+                                <button class="button-class" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#videoModal1">
+                                    <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu"
+                                         class="menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- 모달 -->
-<div class="modal fade" id="videoModal3" tabindex="-1" aria-labelledby="videoModalLabel3" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel3">3번 카메라</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <video id="popupVideo3" controls style="width: 100%; height: auto;">
-                    <source src="{% static 'video/파손3.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-</div>
+            <!-- 모달 -->
+            <div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel1"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="videoModalLabel2">CCTV</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
+                            <div class="video-container"
+                                 style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
+                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4"
+                                            style="display: block; margin: 0 auto;">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
 
-<!-- 네 번째 동영상 섹션 -->
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-body">
-            <div class="video-container">
-                <video id="myVideo4" controls autoplay onended="playNextVideo()">
-                    <source src="{% static 'video/파손4.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-             <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
-                             role="alert">
-                <span>4번 카메라</span>
-                <div class="d-flex align-items-center">
-                    <button class="button-class" type="button" data-bs-toggle="modal" data-bs-target="#videoModal4">
-                        <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" width="20" height="20">
-                    </button>
+                            <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
+                                <p>설명이다</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- 모달 -->
-<div class="modal fade" id="videoModal4" tabindex="-1" aria-labelledby="videoModalLabel4" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel4">4번 카메라</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- 세 번째 동영상 섹션 -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="video-container">
+                            <video id="myVideo3" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손3.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
+                             role="alert">
+                            <span>3번 카메라</span>
+                            <div class="d-flex align-items-center justify-content-end"
+                                 style="position: absolute; top: 10px; right: 10px;">
+                                <button class="button-class" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#videoModal1">
+                                    <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu"
+                                         class="menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <video id="popupVideo4" controls style="width: 100%; height: auto;">
-                    <source src="{% static 'video/파손4.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+
+            <!-- 모달 -->
+            <div class="modal fade" id="videoModal3" tabindex="-1" aria-labelledby="videoModalLabel1"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="videoModalLabel3">CCTV</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
+                            <div class="video-container"
+                                 style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
+                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                    <source src="{% static 'video/파손3.mp4' %}" type="video/mp4"
+                                            style="display: block; margin: 0 auto;">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
+                                <p>설명이다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+
+            <!-- 네 번째 동영상 섹션 -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="video-container">
+                            <video id="myVideo4" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손4.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
+                             role="alert">
+                            <span>4번 카메라</span>
+                            <div class="d-flex align-items-center justify-content-end"
+                                 style="position: absolute; top: 10px; right: 10px;">
+                                <button class="button-class" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#videoModal1">
+                                    <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu"
+                                         class="menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 모달 -->
+            <div class="modal fade" id="videoModal4" tabindex="-1" aria-labelledby="videoModalLabel1"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="videoModalLabel1">CCTV</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
+                            <div class="video-container"
+                                 style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
+                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                    <source src="{% static 'video/파손4.mp4' %}" type="video/mp4"
+                                            style="display: block; margin: 0 auto;">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
+                                <p>설명이다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
+            <!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
 
-<!-- ======= Sidebar ======= -->
-<aside id="sidebar" class="sidebar">
+                <ul class="sidebar-nav" id="sidebar-nav">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link " href="../main">
+                            <i class="bi bi-grid"></i>
+                            <span>메인 페이지</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
 
-        <li class="nav-item">
-            <a class="nav-link " href="../main">
-                <i class="bi bi-grid"></i>
-                <span>메인 페이지</span>
-            </a>
-        </li><!-- End Dashboard Nav -->
+                    <!-- CCTV 메뉴 -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
+                            <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
+                        </a>
+                        <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                            <li>
+                                <a href="../CCTV">
+                                    <i class="bi bi-circle"></i><span>부민동</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../CCTV">
+                                    <i class="bi bi-circle"></i><span>해운대</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li><!-- End CCTV Nav -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                            <i class="bi bi-bar-chart"></i><span>차트</span>
+                        </a>
+                        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
+                    </li><!-- End Charts Nav -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="../QNA">
+                            <i class="bi bi-question-circle"></i>
+                            <span>고객센터</span>
+                        </a>
+                    </li><!-- End F.A.Q Page Nav -->
 
-        <!-- CCTV 메뉴 -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
-                <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="../CCTV">
-                        <i class="bi bi-circle"></i><span>부민동</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../CCTV">
-                        <i class="bi bi-circle"></i><span>해운대</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End CCTV Nav -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-bar-chart"></i><span>차트</span>
-            </a>
-            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav"></ul>
-        </li><!-- End Charts Nav -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="../QNA">
-                <i class="bi bi-question-circle"></i>
-                <span>고객센터</span>
-            </a>
-        </li><!-- End F.A.Q Page Nav -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="../">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>로그아웃</span>
+                        </a>
+                    </li><!-- End Login Page Nav -->
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="../">
-                <i class="bi bi-box-arrow-in-right"></i>
-                <span>로그아웃</span>
-            </a>
-        </li><!-- End Login Page Nav -->
+                </ul>
 
-    </ul>
+            </aside><!-- End Sidebar-->
 
-</aside><!-- End Sidebar-->
+            <script>
+                function toggleSidebar() {
+                    var sidebar = document.querySelector('.sidebar');
+                    var content = document.querySelector('.content');
+                    if (sidebar.style.left === '0px') {
+                        sidebar.style.left = '-300px';
+                        content.style.marginLeft = '0';
+                    } else {
+                        sidebar.style.left = '0';
+                        content.style.marginLeft = '300px';
+             }
+                }
 
-<script>
-    function toggleSidebar() {
-        var sidebar = document.querySelector('.sidebar');
-        var content = document.querySelector('.content');
-        if (sidebar.style.left === '0px') {
-            sidebar.style.left = '-300px';
-            content.style.marginLeft = '0';
-        } else {
-            sidebar.style.left = '0';
-            content.style.marginLeft = '300px';
- }
-    }
-
-    function loadCCTV(videoId) {
-        // 선택한 CCTV에 대한 영상을 로드하는 로직을 추가하세요.
-        // 예: document.getElementById(videoId).src = 'your_cctv_video_url.mp4';
-    }
-</script>
-</body>
+                function loadCCTV(videoId) {
+                    // 선택한 CCTV에 대한 영상을 로드하는 로직을 추가하세요.
+                    // 예: document.getElementById(videoId).src = 'your_cctv_video_url.mp4';
+                }
+            </script>
+            </body>
 
 
 </html>
