@@ -105,33 +105,46 @@
             height: 100%;
         }
 
+         .icon-container {
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2개의 동일한 너비의 열을 생성합니다. */
+            display: flex;
+                justify-content: space-between;
+
+        }
+
+        .icon-card {
+          width: 100%; /* 부모 컨테이너(열)의 100%를 차지하도록 정사각형의 너비를 설정합니다. */
+          height:100%;
+          background-color: #fff; /* 배경색을 원하는 색상으로 설정합니다. */
+          flex: 1;
+          margin:0 10px;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+          height:25vh;
+        }
+
             .icon-button {
               position: relative;
               display: inline-block;
-              padding: 10px 20px; /* 버튼의 패딩 조절 */
               background-color: #fff; /* 버튼의 배경색 */
               color: #4154f1; /* 버튼 텍스트 색상 */
               text-align: center;
               text-decoration: none;
               font-size: 70px; /* 버튼 텍스트 크기 */
-              border: none;
               border-radius: 10px; /* 버튼 모서리 둥글게 만들기 */
               transition: background-color 0.3s;
-              box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+              width: 100%;
+              height: 100%;
+              border: none;
             }
 
             .icon-button:hover {
               background-color: #4154f1; /* 버튼에 호버 효과 시 배경색 변경 */
               color: #fff;
             }
-
-        .button-row {
-            display: flex;
-          }
-
-          .button-card-col-4 {
-            flex: 0 0 calc(33.333% - 20px); /* 각 카드 컬럼의 너비를 설정합니다. 여기서는 33.333%로 설정하였습니다. */
-        }
 
 
     </style>
@@ -157,7 +170,7 @@
                                 <div class="col-lg-6">
                                     <h5 class="card-title">CCTV</h5>
                                 </div>
-                                <div >
+                                <div>
                                     <div class="video-container">
                                         <video id="myVideo" controls autoplay onended="playNextVideo()">
                                             <source src="{% static 'video/화재３.mp4' %}" type="video/mp4">
@@ -179,6 +192,7 @@
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
+                        <section class="section">
                         <h5 class="card-title">공지사항</h5>
 
                         <!-- Accordion without outline borders -->
@@ -228,26 +242,57 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        </section>
                         </div><!-- End Accordion without outline borders -->
 
                     </div>
-                </div>
 
-                <div class="button-row">
-                    <div class="button-card-col-4">
-                        <button class="icon-button">
-                            <span style="font-size:14px;">긴급 화재 신고</span>
-                            <br>
-                            <i class="ri-fire-line"></i>
-                        </button>
+                <div class="icon-container">
+                    <div class="icon-card">
+
+                            <button id="emergencyButton" class="icon-button">
+                                <span style="font-size:14px;">긴급 화재 신고</span>
+                                <br>
+                                <i class="ri-fire-line"></i>
+                            </button>
+
                     </div>
-                    <div class="button-card-col-4">
-                        <button class="icon-button">
-                            <span style="font-size:14px;">이상 행동 신고</span>
-                            <br>
-                            <i class="bx bxs-phone-call" style="margin:17 0px;"></i>
-                        </button>
+
+                     <script>
+                        // 버튼 클릭 시 이벤트 핸들러
+                        document.getElementById('emergencyButton').onclick = function () {
+                            var phoneNumber = '119'; // 긴급 신고 전화번호
+
+                            if (confirm('긴급 화재 신고 전화번호 ' + phoneNumber + '로 전화를 거시겠습니까?')) {
+                                window.open('tel:' + phoneNumber); // 전화번호로 전화 걸기
+                            }
+                        };
+                    </script>
+
+                    <div class="icon-card">
+                            <button id="reportButton" class="icon-button">
+                                <span style="font-size:14px;">이상 행동 신고</span>
+                                <br>
+                                <i class="bx bxs-phone-call" style="margin:17 0px;"></i>
+                            </button>
+
                     </div>
+
+                    <script>
+                        // 버튼 클릭 시 이벤트 핸들러
+                        document.getElementById('reportButton').onclick = function () {
+                            var phoneNumber = '112'; // 이상 행동 신고 전화번호
+
+                            if (confirm('이상 행동 신고 전화번호 ' + phoneNumber + '로 전화를 거시겠습니까?')) {
+                                window.open('tel:' + phoneNumber); // 전화번호로 전화 걸기
+                            } else {
+                                // 확인 창에서 취소를 눌렀을 때 실행할 코드
+                                console.log('전화 거부됨');
+                            }
+                        };
+                    </script>
+
                 </div>
 
             </div>

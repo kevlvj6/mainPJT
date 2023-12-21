@@ -1,6 +1,4 @@
-{% load static %}
-
-
+<!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -12,12 +10,24 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
+        <!-- CCTV 메뉴 -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>CCTV</span>
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
+                <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-        </li><!-- End Components Nav -->
-
+            <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>부민동</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>해운대</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End CCTV Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bar-chart"></i><span>차트</span>
@@ -32,7 +42,7 @@
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a href="../logout/" class="nav-link collapsed">
+            <a class="nav-link collapsed" href="../logout/">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
