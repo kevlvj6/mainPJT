@@ -66,33 +66,38 @@
                             <div class="card-body">
                                 <div class="pt-4 pb-2">
                                 </div>
-                                <form class="row g-3 needs-validation" novalidate>
-                                    <div class="col-12">
+                                <form class="row g-3" action="./login/" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group has-feedback">
                                         <label class="form-label">ID</label>
-                                        <input type="text" name="username" class="form-control" required>
+                                        <input type="text" name="id" class="form-control"/>
+                                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="form-group has-feedback">
                                         <label class="form-label">PASSWORD</label>
-                                        <input type="password" name="password" class="form-control" required>
+                                        <input type="password" name="pwd" class="form-control"/>
+                                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe"
-                                                   style="font-family: 'Gothic A1', sans-serif; font-size:15px;">아이디
-                                                저장</label>
+                                    <div class="col-5">
+                                        <div class="checkbox icheck">
+                                            <label class="form-check-label"
+                                                   style="font-family: 'Gothic A1', sans-serif; font-size:15px;">
+                                                <input type="checkbox" name="useCookie"> 아이디 저장
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <a href="../main" class="btn btn-primary w-100">Login</a>
-                                    </div>
-                                    <div class="col-12">
+                                    </div><!-- /.col -->
+                                    <div class="col-7">
                                         <p class="small mb-0" style="font-family: 'Gothic A1', sans-serif;">아이디/비밀번호
                                             찾기
-                                            <a href="pages-register.html"
-                                               style="font-family: 'Gothic A1', sans-serif;">회원가입</a>
+                                            <a href="./joinForm" style="font-family: 'Gothic A1', sans-serif;">회원가입</a>
                                         </p>
                                     </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary w-100">로그인</button>
+                                        </div>
+                                    </div><!-- /.col -->
+
                                 </form>
                             </div>
                         </div>
@@ -102,10 +107,6 @@
         </section>
     </div>
 </main>
-
-
-</aside><!-- End Sidebar-->
-
 
 </div>
 <!-- Vendor JS Files -->
