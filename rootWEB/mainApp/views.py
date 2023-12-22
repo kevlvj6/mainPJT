@@ -28,6 +28,14 @@ def QNA(request):
     print('debug >>>> mainApp /QNA')
     return render(request, 'main/QNA.html')
 
+def N_chart(request):
+    print('debug >>>> mainApp /N_chart')
+    return render(request, 'main/N_chart.html')
+
+def chart(request):
+    print('debug >>>> mainApp /chart')
+    return render(request, 'main/chart.html')
+
 
 class VideoCamera(object):
     def __init__(self):
@@ -54,11 +62,3 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-@gzip.gzip_page
-def detectme(request):
-    try:
-        cam = VideoCamera()  # VideoCamera 인스턴스 생성
-        return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
-    except:
-        print("에러입니다")
-        pass

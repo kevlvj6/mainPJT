@@ -8,7 +8,6 @@ urlpatterns = [
     path("main/", views.main),
     path("CCTV/", views.CCTV),
     path("QNA/", views.QNA),
-    path("detectme/", views.detectme),
     path("chart/", views.chart),
+    path("N_chart/", views.N_chart),
 ]
-
