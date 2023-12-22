@@ -12,11 +12,24 @@
             </a>
         </li><!-- End Dashboard Nav -->
 
+       <!-- CCTV 메뉴 -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>CCTV</span>
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cctv-nav">
+                <i class="bi bi-bar-chart"></i><span>CCTV</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-        </li><!-- End Components Nav -->
+            <ul id="cctv-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>부민동</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../CCTV">
+                        <i class="bi bi-circle"></i><span>해운대</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End CCTV Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
@@ -41,3 +54,35 @@
     </ul>
 
 </aside><!-- End Sidebar-->
+
+<!-- Add the following styles to your existing styles -->
+<style>
+    .sidebar {
+        position: fixed;
+        top: 50;
+        bottom: 0;
+        left: 0;
+        width: $00px; /* Adjust the width as needed */
+        padding: 20px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #aab7cf transparent;
+        box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+        background-color: #fff;
+    }
+
+    .content {
+        margin-left: 150px; /* Adjust this value to match the width of the sidebar */
+        transition: margin-left 0.3s;
+    }
+
+
+    .toggle-btn {
+        font-size: 20px;
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 2;
+    }
+</style>
