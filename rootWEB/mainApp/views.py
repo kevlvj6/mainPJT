@@ -89,6 +89,9 @@ def QNA(request):
     print('debug >>>> mainApp /QNA')
     return render(request, 'main/QNA.html')
 
+def chart(request):
+    print('debug >>>> mainApp /chart')
+    return render(request, 'main/chart.html')
 
 class VideoCamera(object):
     def __init__(self):

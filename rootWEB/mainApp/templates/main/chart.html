@@ -1,0 +1,738 @@
+
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>CCTV 관리자 사이트</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link rel="icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'resources/NiceAdmin/assets/img/prelogo.png' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.snow.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.bubble.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/style.css'%}" rel="stylesheet"
+          type="text/css"/>
+
+    <!-- Template Main CSS File -->
+    <link href="{% static '/resources/NiceAdmin/assets/css/style.css'%}" rel="stylesheet" type="text/css"/>
+
+    <!--    &lt;!&ndash; Custom fonts for this template&ndash;&gt;-->
+    <!--    <link href="{% static '/resources/chart_boot/vendor/fontawesome-free/css/all.min.css'%}" rel="stylesheet"-->
+    <!--          type="text/css">-->
+    <!--    <link-->
+    <!--            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"-->
+    <!--            rel="stylesheet">-->
+
+    <!--    &lt;!&ndash; Custom styles for this template&ndash;&gt;-->
+    <!--    <link href="{% static '/resources/chart_boot/css/sb-admin-2.min.css'%}" rel="stylesheet" type="text/css">-->
+
+    <style>
+        body {
+          margin: 0;
+          font-family: Noto Sans KR, sans-serif;
+        }
+
+        .sidebar {
+          position: fixed;
+          top: 60px;
+          left: -300px;
+          bottom: 0;
+          width: 300px;
+          z-index: 996;
+          transition: all 0.3s;
+          padding: 20px;
+          overflow-y: auto;
+          scrollbar-width: thin;
+          scrollbar-color: #aab7cf transparent;
+          box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+          background-color: #fff;
+        }
+
+        .sidebar::-webkit-scrollbar {
+          width: 5px;
+          height: 8px;
+          background-color: #fff;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+          background-color: #aab7cf;
+        }
+
+        .content {
+        padding-top: 80px; /* 고정된 헤더를 고려하여 콘텐츠의 상단 여백을 추가 */
+        padding-right: 30px;
+        padding-bottom: 0;
+        padding-left: 50px;
+        transition: padding-left 0.3s;
+    }
+
+        .sidebar.active {
+          left: 0; /* active 클래스가 추가될 때 사이드바를 보이게 함 */
+        }
+
+        .content.active {
+          padding-left: 330px; /* active 클래스가 추가될 때 왼쪽 여백을 설정하여 사이드바가 나타날 때 메인 콘텐츠가 밀리도록 함 */
+        }
+
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 비율을 유지하기 위한 값. 비율을 변경하려면 조절하세요. */
+            margin-bottom : 15px;
+            max-width: 100%; /* 부모인 card-body의 너비에 맞추기 */
+        }
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+            .icon-button {
+              position: relative;
+              display: inline-block;
+              padding: 10px 20px; /* 버튼의 패딩 조절 */
+              background-color: #fff; /* 버튼의 배경색 */
+              color: #4154f1; /* 버튼 텍스트 색상 */
+              text-align: center;
+              text-decoration: none;
+              font-size: 70px; /* 버튼 텍스트 크기 */
+              border: none;
+              border-radius: 10px; /* 버튼 모서리 둥글게 만들기 */
+              transition: background-color 0.3s;
+              box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+            }
+
+            .icon-button:hover {
+              background-color: #4154f1; /* 버튼에 호버 효과 시 배경색 변경 */
+              color: #fff;
+            }
+
+        .button-row {
+            display: flex;
+          }
+
+          .button-card-col-4 {
+            flex: 0 0 calc(33.333% - 20px); /* 각 카드 컬럼의 너비를 설정합니다. 여기서는 33.333%로 설정하였습니다. */
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+{% include 'header.html' %}
+
+{% include 'sidebar.html' %}
+<div class="content">
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body" style="height: 420px; ">
+                        <div class="d-sm-flex justify-content-between align-items-start">
+                            <div>
+                                <h4 class="card-title card-title-dash" style="font-family: 'Noto Sans KR', sans-serif;"> 시간대 별 매출액 비교  </h4>
+                            </div>
+
+                        </div>
+                        <div class="chartjs-wrapper mt-5" style="height:70%; margin-bottom:20px;">
+                          <div id="plz" style="height: 110%"></div>
+
+
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script type="text/javascript">
+    var dom = document.getElementById('plz');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    const categories = (function () {
+  let now = new Date();
+  let res = [];
+  let len = 10;
+  while (len--) {
+    res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
+    now = new Date(+now - 2000);
+  }
+  return res;
+})();
+const categories2 = (function () {
+  let res = [];
+  let len = 10;
+  while (len--) {
+    res.push(10 - len - 1);
+  }
+  return res;
+})();
+const data = (function () {
+  let res = [];
+  let len = 10;
+  while (len--) {
+    res.push(Math.round(Math.random() * 1000));
+  }
+  return res;
+})();
+const data2 = (function () {
+  let res = [];
+  let len = 0;
+  while (len < 10) {
+    res.push(+(Math.random() * 10 + 5).toFixed(1));
+    len++;
+  }
+  return res;
+})();
+option = {
+  title: {
+    text: ' '
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#283b56'
+      }
+    }
+  },
+  legend: {},
+  toolbox: {
+    show: true,
+    feature: {
+      dataView: { readOnly: false },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+  dataZoom: {
+    show: false,
+    start: 0,
+    end: 100
+  },
+  xAxis: [
+    {
+      type: 'category',
+      boundaryGap: true,
+      data: categories
+    },
+    {
+      type: 'category',
+      boundaryGap: true,
+      data: categories2
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      scale: true,
+      name: '      매출(만원)               ',
+      max: 50,
+      min: 0,
+      boundaryGap: [0.1 , 0.1]
+    },
+    {
+      type: 'value',
+      scale: true,
+      name: '             주문 (수)',
+      max: 1000,
+      min: 0,
+      boundaryGap: [0.2, 0.2]
+    }
+  ],
+  series: [
+    {
+      name: '실시간 매출액(만원)         ',
+      type: 'bar',
+      xAxisIndex: 1,
+      yAxisIndex: 1,
+      data: data
+    },
+    {
+      name: '주문 (수)',
+      type: 'line',
+      data: data2
+    }
+  ]
+};
+app.count = 11;
+setInterval(function () {
+  let axisData = new Date().toLocaleTimeString().replace(/^\D*/, '');
+  data.shift();
+  data.push(Math.round(Math.random() * 1000));
+  data2.shift();
+  data2.push(+(Math.random() * 10 + 5).toFixed(1));
+  categories.shift();
+  categories.push(axisData);
+  categories2.shift();
+  categories2.push(app.count++);
+  myChart.setOption({
+    xAxis: [
+      {
+        data: categories
+      },
+      {
+        data: categories2
+      }
+    ],
+    series: [
+      {
+        data: data
+      },
+      {
+        data: data2
+      }
+    ]
+  });
+}, 2100);
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-5">
+                <div class="card" style="height: 420px; ">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-family: 'Noto Sans KR', sans-serif;">월별 매출액(천원)</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chartjs-wrapper mt-3" style="height: 300px; ">
+                            <canvas id="myBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-family: 'Noto Sans KR', sans-serif;">월별 범죄별 감지 건수(회)</h5>
+                    </div>
+                    <div class="chartjs-wrapper mt-4" style="height: 300px; ">
+
+
+                        <!-- Column Chart -->
+                        <div id="columnChart"></div>
+
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                              new ApexCharts(document.querySelector("#columnChart"), {
+                                series: [{
+                                  name: '전도',
+                                  data: [80, 72, 55, 68, 50, 91, 58, 63, 60, 77, 61, 40]
+                                }, {
+                                  name: '파손',
+                                  data: [114, 55, 101, 68, 37, 105, 41, 72 , 94, 80, 40, 20]
+                                }, {
+                                  name: '화재',
+                                  data: [35, 47, 26, 16, 40, 38, 22, 30, 41 , 20 , 15 , 11]
+                                }],
+                                chart: {
+                                  type: 'bar',
+                                  height: 250
+                                },
+                                plotOptions: {
+                                  bar: {
+                                    horizontal: false,
+                                    columnWidth: '55%',
+                                    endingShape: 'rounded'
+                                  },
+                                },
+                                dataLabels: {
+                                  enabled: false
+                                },
+                                stroke: {
+                                  show: true,
+                                  width: 2,
+                                  colors: ['transparent']
+                                },
+                                xaxis: {
+                                  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov' , 'Dec'],
+                                },
+                                yaxis: {
+                                  title: {
+                                    text: '발생 건수 (회)'
+                                  }
+                                },
+                                fill: {
+                                  opacity: 1
+                                },
+                                tooltip: {
+                                  y: {
+                                    formatter: function(val) {
+                                      return "총 " + val + " ( 회 ) "
+                                    }
+                                  }
+                                }
+                              }).render();
+                            });
+                        </script>
+                        <!-- End Column Chart -->
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-body">
+                        <h6 class="card-title" style="font-family: 'Noto Sans KR', sans-serif;"> 전체 범죄 중 특정 범죄 비율</h6>
+                    </div>
+                    <div class="chartjs-wrapper"  style="height: 264px; margin-bottom:60px;">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</div>
+
+<!-- Donut Chart -->
+
+<!-- 부트스트랩 JS 및 Popper.js 추가 -->
+
+<script src="{% static '/resources/NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/chart.js/chart.umd.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/echarts/echarts.min.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/quill/quill.min.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/tinymce/tinymce.min.js' %}"></script>
+<script src="{% static '/resources/NiceAdmin/assets/vendor/php-email-form/validate.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Template Main JS File -->
+<!--<script src="{% static '/resources/NiceAdmin/assets/js/main.js' %}"></script>-->
+
+
+<!-- Template chart_boot -->
+<script src="{% static '/resources/chart_boot/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static '/resources/chart_boot/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static '/resources/chart_boot/vendor/jquery-easing/jquery.easing.min.js'%}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static '/resources/chart_boot/js/sb-admin-2.min.js'%}"></script>
+
+<!-- Page level plugins -->
+<script src="{% static '/resources/chart_boot/vendor/chart.js/Chart.min.js'%}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{% static '/resources/chart_boot/js/demo/chart-area-demo.js'%}"></script>
+<script src="{% static '/resources/chart_boot/js/demo/chart-pie-demo.js'%}"></script>
+<script src="{% static '/resources/chart_boot/js/demo/chart-bar-demo.js'%}"></script>
+
+
+<script>
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      const content = document.querySelector('.content');
+
+      // 'active' 클래스를 토글하여 사이드바와 메인 콘텐츠의 위치를 조절
+      sidebar.classList.toggle('active');
+      content.classList.toggle('active');
+    }
+
+    const videoPlayer = document.getElementById('myVideo');
+    const videoSources = [
+      '{% static 'video/화재１.mp4' %}',
+      '{% static 'video/화재２.mp4' %}',
+      '{% static 'video/화재３.mp4' %}',  // 다음 동영상의 경로를 추가
+      // 다른 동영상들의 경로도 필요에 따라 추가
+    ];
+    let currentVideoIndex = 0;
+
+    function playNextVideo() {
+      console.log('playNextVideo clicked');  // 디버그용 로그 메시지
+      // Increment the current video index
+      currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+
+      // Change the video source and play
+      videoPlayer.src = videoSources[currentVideoIndex];
+      videoPlayer.play();
+    }
+
+ (function($) {
+      'use strict';
+      $(function() {
+        if ($("#performaneLine").length) {
+          var graphGradient = document.getElementById("performaneLine").getContext('2d');
+          var graphGradient2 = document.getElementById("performaneLine").getContext('2d');
+          var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+          saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+          saleGradientBg.addColorStop(1, 'rgba(26, 115, 232, 0.02)');
+          var saleGradientBg2 = graphGradient2.createLinearGradient(100, 0, 50, 150);
+          saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+          saleGradientBg2.addColorStop(1, 'rgba(0, 208, 255, 0.03)');
+          var salesTopData = {
+              labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+              datasets: [{
+                  label: '이번 주',
+                  data: [100, 10, 100, 100, 100, 100, 100],
+                  backgroundColor: saleGradientBg,
+                  borderColor: [
+                      '#1F3BB3',
+                  ],
+                  borderWidth: 2.0,
+                  fill: true, // 3: no fill
+                  pointBorderWidth: 1,
+                  pointRadius: [4, 4, 4, 4, 4, 4, 4],
+                  pointHoverRadius: [2, 2, 2, 2, 2, 2, 2],
+                  pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3'],
+                  pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
+              },{
+                label: '지난 주',
+                data: [30, 150, 190, 250, 120, 150, 130],
+                backgroundColor: saleGradientBg2,
+                borderColor: [
+                    '#52CDFF',
+                ],
+                borderWidth: 2.0,
+                fill: true, // 3: no fill
+                pointBorderWidth: 1,
+                pointRadius: [4, 4, 4, 4, 4, 4, 4],
+                pointHoverRadius: [2, 2, 2, 2, 2, 2, 2],
+                pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3'],
+                pointBorderColor: ['#fff','#fff','#fff','#fff','#fff','#fff','#fff'],
+            }]
+          };
+
+          var salesTopOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+              scales: {
+                  yAxes: [{
+                      gridLines: {
+                          display: true,
+                          drawBorder: false,
+                          color:"#F0F0F0",
+                          zeroLineColor: '#F0F0F0',
+                      },
+                      ticks: {
+                        beginAtZero: false,
+                        autoSkip: true,
+                        maxTicksLimit: 4,
+                        fontSize: 10,
+                        color:"#6B778C"
+                      }
+                  }],
+                  xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    ticks: {
+                      beginAtZero: false,
+                      autoSkip: true,
+                      maxTicksLimit: 7,
+                      fontSize: 10,
+                      color:"#6B778C"
+                    }
+                }],
+              },
+              legend:false,
+              legendCallback: function (chart) {
+                var text = [];
+                text.push('<div class="chartjs-legend"><ul>');
+                for (var i = 0; i < chart.data.datasets.length; i++) {
+                  console.log(chart.data.datasets[i]); // see what's inside the obj.
+                  text.push('<li>');
+                  text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                  text.push(chart.data.datasets[i].label);
+                  text.push('</li>');
+                }
+                text.push('</ul></div>');
+                return text.join("");
+              },
+
+              elements: {
+                  line: {
+                      tension: 0.4,
+                  }
+              },
+              tooltips: {
+                  backgroundColor: 'rgba(31, 59, 179, 1)',
+              }
+          }
+          var salesTop = new Chart(graphGradient, {
+              type: 'line',
+              data: salesTopData,
+              options: salesTopOptions
+          });
+          document.getElementById('performance-line-legend').innerHTML = salesTop.generateLegend();
+        }
+        if ($("#performaneLine-dark").length) {
+          var graphGradient = document.getElementById("performaneLine-dark").getContext('2d');
+          var graphGradient2 = document.getElementById("performaneLine-dark").getContext('2d');
+          var saleGradientBg = graphGradient.createLinearGradient(5, 0, 5, 100);
+          saleGradientBg.addColorStop(0, 'rgba(26, 115, 232, 0.18)');
+          saleGradientBg.addColorStop(1, 'rgba(34, 36, 55, 0.5)');
+          var saleGradientBg2 = graphGradient2.createLinearGradient(10, 0, 0, 150);
+          saleGradientBg2.addColorStop(0, 'rgba(0, 208, 255, 0.19)');
+          saleGradientBg2.addColorStop(1, 'rgba(34, 36, 55, 0.2)');
+          var salesTopDataDark = {
+              labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [50, 110, 60, 290, 200, 115, 130],
+                  backgroundColor: saleGradientBg,
+                  borderColor: [
+                      '#1F3BB3',
+                  ],
+                  borderWidth: 1.5,
+                  fill: true, // 3: no fill
+                  pointBorderWidth: 1,
+                  pointRadius: [4, 4, 4, 4, 4,4, 4],
+                  pointHoverRadius: [2, 2, 2, 2, 2,2, 2],
+                  pointBackgroundColor: ['#1F3BB3)', '#1F3BB3', '#1F3BB3', '#1F3BB3','#1F3BB3)', '#1F3BB3', '#1F3BB3'],
+                  pointBorderColor: ['#222437','#222437','#222437','#222437','#222437','#222437','#222437'],
+              },{
+                label: '# of Votes',
+                data: [30, 150, 190, 250, 120, 150, 130],
+                backgroundColor: saleGradientBg2,
+                borderColor: [
+                    '#52CDFF',
+                ],
+                borderWidth: 1.5,
+                fill: true, // 3: no fill
+                pointBorderWidth: 1,
+                pointRadius: [4, 4, 4, 4, 4,4, 4],
+                pointHoverRadius: [2, 2, 2, 2, 2,2, 2],
+                pointBackgroundColor: ['#52CDFF)', '#52CDFF', '#52CDFF', '#52CDFF','#52CDFF)', '#52CDFF', '#52CDFF'],
+                pointBorderColor: ['#222437','#222437','#222437','#222437','#222437','#222437','#222437'],
+            }]
+          };
+
+          var salesTopOptionsDark = {
+            responsive: true,
+            maintainAspectRatio: false,
+              scales: {
+                  yAxes: [{
+                      gridLines: {
+                          display: true,
+                          drawBorder: false,
+                          color:"rgba(255,255,255,.05)",
+                          zeroLineColor: "rgba(255,255,255,.05)",
+                      },
+                      ticks: {
+                        beginAtZero: false,
+                        autoSkip: true,
+                        maxTicksLimit: 4,
+                        fontSize: 10,
+                        color:"#6B778C"
+                      }
+                  }],
+                  xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                    ticks: {
+                      beginAtZero: false,
+                      autoSkip: true,
+                      maxTicksLimit: 7,
+                      fontSize: 10,
+                      color:"#6B778C"
+                    }
+                }],
+              },
+              legend:false,
+              legendCallback: function (chart) {
+                var text = [];
+                text.push('<div class="chartjs-legend"><ul>');
+                for (var i = 0; i < chart.data.datasets.length; i++) {
+                  console.log(chart.data.datasets[i]); // see what's inside the obj.
+                  text.push('<li>');
+                  text.push('<span style="background-color:' + chart.data.datasets[i].borderColor + '">' + '</span>');
+                  text.push(chart.data.datasets[i].label);
+                  text.push('</li>');
+                }
+                text.push('</ul></div>');
+                return text.join("");
+              },
+
+              elements: {
+                  line: {
+                      tension: 0.4,
+                  }
+              },
+              tooltips: {
+                  backgroundColor: 'rgba(31, 59, 179, 1)',
+              }
+          }
+          var salesTopDark = new Chart(graphGradient, {
+              type: 'line',
+              data: salesTopDataDark,
+              options: salesTopOptionsDark
+          });
+          document.getElementById('performance-line-legend-dark').innerHTML = salesTopDark.generateLegend();
+        }
+        if ($("#datepicker-popup").length) {
+          $('#datepicker-popup').datepicker({
+            enableOnReadonly: true,
+            todayHighlight: true,
+          });
+          $("#datepicker-popup").datepicker("setDate", "0");
+        }
+
+      });
+    })(jQuery);
+
+</script>
+
+</body>
+</html>
