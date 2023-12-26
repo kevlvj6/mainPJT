@@ -372,7 +372,7 @@
 
                         </div>
                         <div class="chartjs-wrapper mt-5" style="height:70%; margin-bottom:20px;">
-                          <div id="plz" style="height: 100%"></div>
+                          <div id="plz" style="height: 110%"></div>
 
 
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
@@ -464,7 +464,7 @@ option = {
     {
       type: 'value',
       scale: true,
-      name: '가격(원)',
+      name: '      매출(만원)               ',
       max: 50,
       min: 0,
       boundaryGap: [0.1 , 0.1]
@@ -472,22 +472,22 @@ option = {
     {
       type: 'value',
       scale: true,
-      name: '주문 건수(수) ',
-      max: 1200,
+      name: '             주문 (수)',
+      max: 1000,
       min: 0,
       boundaryGap: [0.2, 0.2]
     }
   ],
   series: [
     {
-      name: 'Dynamic Bar',
+      name: '실시간 매출액(만원)         ',
       type: 'bar',
       xAxisIndex: 1,
       yAxisIndex: 1,
       data: data
     },
     {
-      name: 'Dynamic Line',
+      name: '주문 (수)',
       type: 'line',
       data: data2
     }
@@ -540,7 +540,7 @@ setInterval(function () {
             <div class="col-lg-5">
                 <div class="card" style="height: 420px; ">
                     <div class="card-body">
-                        <h5 class="card-title" style="font-family: 'Noto Sans KR', sans-serif;">매출액</h5>
+                        <h5 class="card-title" style="font-family: 'Noto Sans KR', sans-serif;">월별 매출액(천원)</h5>
                     </div>
                     <div class="card-body">
                         <div class="chartjs-wrapper mt-3" style="height: 300px; ">

@@ -28,13 +28,10 @@ def QNA(request):
     print('debug >>>> mainApp /QNA')
     return render(request, 'main/QNA.html')
 
-def N_chart(request):
-    print('debug >>>> mainApp /N_chart')
-    return render(request, 'main/N_chart.html')
 
 def chart(request):
     print('debug >>>> mainApp /chart')
-    return render(request, 'main/chart.html')
+    return render(request, 'main/N_chart.html')
 
 
 class VideoCamera(object):
