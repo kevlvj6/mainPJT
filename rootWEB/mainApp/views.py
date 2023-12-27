@@ -126,3 +126,7 @@ def detectme(request):
     except:
         print("에러입니다")
         pass
+
+def info(request):
+    print('debug >>>> mainApp /info')
+    return render(request, 'main/info.html')
