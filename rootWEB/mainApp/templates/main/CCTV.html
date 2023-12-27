@@ -107,7 +107,11 @@
         z-index: 1000; /* 다른 요소들보다 위에 표시되도록 설정 */
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
     }
-
+element.style {
+    max-height: 60vh;
+    overflow: auto;
+    margin: -190px 20px 0px 0;
+}
         .content {
         padding-top: 80px; /* 고정된 헤더를 고려하여 콘텐츠의 상단 여백을 추가 */
         padding-right: 30px;
@@ -162,6 +166,7 @@
 {% include 'header.html' %}
 
 {% include 'sidebar.html' %}
+
 <div class="content">
     <!-- 중제목 추가 -->
     <h2 class="text-left">CCTV 동영상 목록</h2>
@@ -202,10 +207,10 @@
                             <h5 class="modal-title" id="videoModalLabel1">CCTV</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
+                        <div class="modal-body text-center" style="padding: 0;"> <!-- text-center 클래스 추가 -->
                             <div class="video-container"
                                  style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
-                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                <video id="myVideo2" controls autoplay onended="playNextVideo()">
                                     <source src="{% static 'video/파파손1.mp4' %}" type="video/mp4"
                                             style="display: block; margin: 0 auto;">
                                     Your browser does not support the video tag.
@@ -221,49 +226,56 @@
 
 
             <!-- 두 번째 동영상 섹션 -->
-<div class="col-lg-6">
-    <div class="card">
-        <div class="card-body">
-            <div class="video-container">
-                <video id="myVideo2" controls autoplay onended="playNextVideo()">
-                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert" role="alert">
-                <span>2번 카메라</span>
-                <div class="d-flex align-items-center justify-content-end" style="position: absolute; top: 10px; right: 10px;">
-                    <button class="button-class" type="button" data-bs-toggle="modal" data-bs-target="#videoModal1">
-                        <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" class="menu-icon">
-                    </button>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="video-container">
+                            <video id="myVideo2" controls autoplay onended="playNextVideo()">
+                                <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
+                             role="alert">
+                            <span>2번 카메라</span>
+                            <div class="d-flex align-items-center justify-content-end"
+                                 style="position: absolute; top: 10px; right: 10px;">
+                                <button class="button-class" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#videoModal1">
+                                    <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu"
+                                         class="menu-icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- 모달 -->
-<div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="videoModalLabel2">CCTV</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-                <div class="video-container" style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
-                    <video id="myVideo2" controls autoplay onended="playNextVideo()">
-                        <!-- Update the video source here -->
-                        <source src="{% static 'video/파손2.mp4' %}" type="video/mp4" style="display: block; margin: 0 auto;">
-                        Your browser does not support the video tag.
-                    </video>
+            <!-- 모달 -->
+            <div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel1"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="videoModalLabel2">CCTV</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="video-container"
+                                 style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
+                                <video id="myVideo2" controls autoplay onended="playNextVideo()">
+                                    <!-- Update the video source here -->
+                                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4"
+                                            style="display: block; margin: 0 auto;">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;"></div>
+                        </div>
+                    </div>
                 </div>
-
-                <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;"></div>
             </div>
-        </div>
-    </div>
-</div>
 
 
             <!-- 세 번째 동영상 섹션 -->
@@ -304,7 +316,7 @@
                         <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
                             <div class="video-container"
                                  style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
-                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                <video id="myVideo3" controls autoplay onended="playNextVideo()">
                                     <source src="{% static 'video/파손3.mp4' %}" type="video/mp4"
                                             style="display: block; margin: 0 auto;">
                                     Your browser does not support the video tag.
@@ -356,7 +368,7 @@
                         <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
                             <div class="video-container"
                                  style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
-                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                                <video id="myVideo4" controls autoplay onended="playNextVideo()">
                                     <source src="{% static 'video/파손4.mp4' %}" type="video/mp4"
                                             style="display: block; margin: 0 auto;">
                                     Your browser does not support the video tag.
