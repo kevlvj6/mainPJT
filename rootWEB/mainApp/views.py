@@ -4,6 +4,30 @@ from .models import *
 
 from django.core.paginator import Paginator
 
+import os
+import subprocess
+
+def detect_objects(request):
+    video_filename = '10.mp4' #비디오
+    video_path = os.path.join('static', video_filename)
+    script_path = os.path.join('static', 'yolov5', 'detect.py')  # 경로 수정
+
+    # 명령어 문자열에서 yolov5 안의 detect.py 스크립트의 절대 경로를 명시적으로 지정
+    command = f'python {script_path} --weights 모델명.pt --source {video_path} --view-img'
+
+    try:
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        stdout, stderr = process.communicate()
+
+        if process.returncode == 0:
+            detection_result = stdout
+        else:
+            detection_result = f"Error: {stderr}"
+
+    except Exception as e:
+        detection_result = f"Exception: {str(e)}"
+
+    return JsonResponse({'detection_result': detection_result})
 
 # Create your views here.
 def index(request) :

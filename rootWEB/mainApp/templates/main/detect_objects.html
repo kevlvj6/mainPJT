@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Results</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function updateResults() {
+                // Ajax 요청을 수행
+                $.ajax({
+                    url: '/detect_objects/',  // urls.py에 추가한 URL 패턴
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        // 서버에서 받아온 데이터를 화면에 표시
+                        $('#detection_result').html(data.detection_result);
+
+                        // 이미지 업데이트
+                        updateImages();
+                    },
+                    complete: function () {
+                        // 주기적으로 업데이트하기 위해 재귀 호출
+                        setTimeout(updateResults, 2000);  // 2초마다 업데이트
+                    }
+                });
+            }
+
+            function updateImages() {
+                // 현재 프레임에 해당하는 이미지를 로딩하여 표시
+                var idx = getCurrentFrameIndex();  // 이 함수를 현재 프레임 인덱스를 얻는 방식으로 수정하세요
+                var imageUrl = '/static/yolov5/runs/detect/exp2/images/frame_' + idx + '.jpg';
+
+                // 이미지를 동적으로 로딩하여 표시
+                $('#detection_image').attr('src', imageUrl);
+            }
+
+            // 페이지 로드 후 최초 업데이트 시작
+            updateResults();
+        });
+    </script>
+</head>
+<body>
+    <div id="detection_result">
+        <!-- 결과가 여기에 동적으로 업데이트됩니다. -->
+    </div>
+    <div>
+        <!-- 이미지를 표시할 태그 -->
+        <img id="detection_image" src="" alt="Detection Image">
+    </div>
+</body>
+</html>
