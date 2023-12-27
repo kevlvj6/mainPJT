@@ -38,11 +38,28 @@
           type="text/css"/>
     <link href="{% static '/resources/BizLand/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet"
           type="text/css"/>
-  <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet"
+    <link href="{% static '/resources/NiceAdmin/assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet"
           type="text/css"/>
 
     <!-- Template Main CSS File -->
     <link href="{% static '/resources/BizLand/assets/css/style.css' %}" rel="stylesheet" type="text/css"/>
+
+    <style>
+    .circle {
+            background-color: white;
+            display: inline-block;
+            border-radius: 50%;
+            padding: 20px; /* 동그라미 안에 여백 추가 */
+            width: 300px; /* 가로 크기 조절 */
+            height:300px;
+            text-align: center; /* 텍스트 중앙 정렬 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2eefd;
+        }
+    </style>
 
     <!-- =======================================================
     * Template Name: BizLand
@@ -72,7 +89,7 @@
             </ul>
 
             <a class="nav-link scrollto" href="../index">
-                <div class="btn-get-started" >시작하기</div>
+                <div class="btn-get-started">시작하기</div>
             </a>
 
             <i class="bi bi-list mobile-nav-toggle"></i>
@@ -90,15 +107,81 @@
         <br>
         <h2 style="font-family: 'Gothic A1', sans-serif; font-size:20px;">합리적인 스마트 무인 점포 운영을 위한 기술을 제공합니다.</h2>
         <div class="d-flex">
-            <a href="../main" class="btn-get-started scrollto" style="font-family: 'Noto Sans KR', sans-serif;">서비스 시작하기</a>
+            <a href="../main" class="btn-get-started scrollto" style="font-family: 'Noto Sans KR', sans-serif;">서비스
+                시작하기</a>
         </div>
     </div>
 </section><!-- End Hero -->
 
 <main id="main">
 
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg" style="padding:80 0px;">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <h3 style="font-family: 'Noto Sans KR', sans-serif; padding:0 0 20 10px; ">Overview</h3>
+
+                <div class="col-lg-5  pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
+                     data-aos-delay="100">
+                    <h4 class="title" style="font-size: 30px;">쉽지만은 않은 무인 매장 운영, <br> <span
+                            style="font-family: 'Noto Sans KR', sans-serif; color:#4154f1;">머라고 하지</span></h4>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
+                     data-aos-delay="100">
+
+                    <p class="fst">
+                        무인 매장 대상 범죄 증가로 창업을 망설이는 예비 점주님 <br>
+                        반복되는 돌발 상황 발생으로 사업 확장의 꿈을 포기한 점주님 <br>
+                        자꾸만 <strong>CCTV 화면을 확인하게 되는 점주님</strong>을 위한 서비스는 없을까?
+                    </p>
+                    <div style="padding: 0 0 30 0px;"></div>
+                    <p class="fst">
+                        돌발 상황 대응 방안 부족으로 무인 운영의 이점을 잃어버린 무인 점포 점주님을 위해 <br>
+                        365일 24시간 <strong style="color:#4154f1;">쉬지 않고 점포를 지키는 감시자 같은 서비스</strong>를 제공하고자 하였습니다.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!--    Desk Research-->
+    <section class="about section-bg" style="padding:40 0px;">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <h3 style="font-family: 'Noto Sans KR', sans-serif; padding:0 0 40 10px;">Desk Research</h3>
+                <div class="col-lg-3  pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
+                     data-aos-delay="100">
+                    <p style="font-family: 'Gothic A1', sans-serif; font-size:25px; text-align: center;  font-weight: bold;">
+                        점차 증가하는 무인 점포</p>
+                    <p class="fst" style="text-align: center;">최저임금과 무인점포 인허가</p>
+                    <img src="static/infoimg/img.png" class="img-fluid" alt="" style="max-height: 70%;">
+                    <p class="fst" style="font-size:10px; color:#b0b0b0">출처 : 식품자동판매기를 도입한 기업기준, 자료 =행정 안전부</p>
+                </div>
+                <div class="col-lg-6  pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
+                     data-aos-delay="100">
+                    <p style="font-family: 'Gothic A1', sans-serif; font-size:25px; text-align: center;  font-weight: bold;">
+                        <span class="fst" style="text-align: center; font-size:20px;">하지만...</span>
+                        <br>점주님과 손님 모두 걱정 가득한 무인 매장의 현실</p>
+                    <img src="static/infoimg/gra.png" class="img-fluid" alt="" style="width: 120%;">
+                     <p class="fst" style="font-size:10px; color:#b0b0b0">출처 : 엑시스코리아, 무인 매장 선호도 조사 ‘대한민국 리테일 리서치 2022’ 발표</p>
+                </div>
+                <div class="col-lg-3  pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
+                     data-aos-delay="100">
+                    <div class="circle">
+                    <p style="font-family: 'Gothic A1', sans-serif; font-size:20px; ">효율적인 무인 점포<br> 운영을 위한<br> <strong style="color: #4154f1;">실시간 알림 서비스</strong>의 <br>필요성 확인</p>
+                </div>
+                    </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
+    <section id="services" class="services">
         <div class="container" data-aos="fade-up">
 
             <div class="row">
@@ -121,8 +204,8 @@
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                         <div class="icon"><i class="ri-spam-line"></i></div>
-                        <h4 class="title">이상 행동 감지</h4>
-                        <p class="description">점포 내 화재·파손 이외 이상 행동이 감지될 시 알림을 제공합니다.</p>
+                        <h4 class="title">돌발 행동 감지</h4>
+                        <p class="description">점포 내 화재·파손 이외 돌발 행동이 감지될 시 알림을 제공합니다.</p>
                     </div>
                 </div>
 
@@ -139,56 +222,6 @@
         </div>
     </section><!-- End Featured Services Section -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about section-bg">
-        <div class="container" data-aos="fade-up">
-
-            <div class="section-title">
-                <h3 style="font-family: 'Noto Sans KR', sans-serif;">왜 <span style="font-family: 'Noto Sans KR', sans-serif;">Watcher</span>인가?</h3>
-                <p>왓쳐는 무인의 이점을 잃은 무인 점포를 위해 실시간 모니터링 및 알림 서비스로 사업 운영과 확장을 돕는 서비스입니다.</p>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-                    <img src="{% static 'resources/BizLand/assets/img/about.jpg' %}" class="img-fluid" alt="">
-                </div>
-                <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up"
-                     data-aos-delay="100">
-                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                    <p class="fst-italic">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore
-                        magna aliqua.
-                    </p>
-                    <ul>
-                        <li>
-                            <i class="bx bx-store-alt"></i>
-                            <div>
-                                <h5>Ullamco laboris nisi ut aliquip consequat</h5>
-                                <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="bx bx-images"></i>
-                            <div>
-                                <h5>Magnam soluta odio exercitationem reprehenderi</h5>
-                                <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata
-                                    redi</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <p>
-                        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                        in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End About Section -->
 
     <!-- ======= Skills Section ======= -->
     <section id="skills" class="skills">
@@ -340,7 +373,7 @@
     </section><!-- End Clients Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+<!--    <section id="services" class="services">-->
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
