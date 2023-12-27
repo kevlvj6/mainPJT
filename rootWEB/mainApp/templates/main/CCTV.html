@@ -213,7 +213,6 @@
                             </div>
 
                             <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
-                                <p>1번카메라</p>
                             </div>
                         </div>
                     </div>
@@ -222,57 +221,50 @@
 
 
             <!-- 두 번째 동영상 섹션 -->
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="video-container">
-                            <video id="myVideo2" controls autoplay onended="playNextVideo()">
-                                <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert"
-                             role="alert">
-                            <span>2번 카메라</span>
-                            <div class="d-flex align-items-center justify-content-end"
-                                 style="position: absolute; top: 10px; right: 10px;">
-                                <button class="button-class" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#videoModal1">
-                                    <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu"
-                                         class="menu-icon">
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <div class="video-container">
+                <video id="myVideo2" controls autoplay onended="playNextVideo()">
+                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="alert alert-light bg-light border-0 alert-dismissible fade show shadowed-alert" role="alert">
+                <span>2번 카메라</span>
+                <div class="d-flex align-items-center justify-content-end" style="position: absolute; top: 10px; right: 10px;">
+                    <button class="button-class" type="button" data-bs-toggle="modal" data-bs-target="#videoModal1">
+                        <img src="{% static 'resources/NiceAdmin/assets/img/menu.png' %}" alt="Menu" class="menu-icon">
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- 모달 -->
-            <div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel1"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="videoModalLabel2">CCTV</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-center"> <!-- text-center 클래스 추가 -->
-                            <div class="video-container"
-                                 style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
-                                <video id="myVideo1" controls autoplay onended="playNextVideo()">
-                                    <source src="{% static 'video/파손2.mp4' %}" type="video/mp4"
-                                            style="display: block; margin: 0 auto;">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-
-                            <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
-                                <p>2번카메라</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- 모달 -->
+<div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="videoModalLabel2">CCTV</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body text-center">
+                <div class="video-container" style="display: flex; justify-content: center; align-items: center; height: 70vh; overflow: hidden;">
+                    <video id="myVideo1" controls autoplay onended="playNextVideo()">
+                        <!-- Update the video source here -->
+                        <source src="{% static 'video/파손(AI)2.mp4' %}" type="video/mp4" style="display: block; margin: 0 auto;">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
             <!-- 세 번째 동영상 섹션 -->
             <div class="col-lg-6">
@@ -320,7 +312,6 @@
                             </div>
 
                             <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
-                                <p>3번카메라</p>
                             </div>
                         </div>
                     </div>
@@ -373,7 +364,6 @@
                             </div>
 
                             <div style="max-height: 70vh; overflow: auto; margin: 20px 20px 0px 0;">
-                                <p>4번카메라</p>
                             </div>
                         </div>
                     </div>
