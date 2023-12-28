@@ -502,7 +502,7 @@ h6 {
   font-weight: 400;
 }
 
-#hero .btn-get-started {
+.btn-get-started {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
@@ -516,7 +516,7 @@ h6 {
   background-color: #4154f1;
 }
 
-#hero .btn-get-started:hover {
+.btn-get-started:hover {
   background: #247cf0;
 }
 
@@ -725,7 +725,7 @@ section {
 .featured-services .icon i {
   font-size: 48px;
   line-height: 1;
-  color: #4154f1;
+  color: #fff;
   transition: all 0.3s ease-in-out;
 }
 
@@ -751,7 +751,7 @@ section {
 }
 
 .featured-services .icon-box:hover .icon i {
-  color: #fff;
+  color: #4154f1;
 }
 
 /*--------------------------------------------------------------
@@ -924,7 +924,7 @@ section {
   margin: 0 auto;
   width: 64px;
   height: 64px;
-  background: #4154f1;
+  background: #ffffff;
   border-radius: 20px;
   border: 1px solid #4154f1;
   display: flex;
