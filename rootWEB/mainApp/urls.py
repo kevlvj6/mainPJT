@@ -4,8 +4,8 @@ from mainApp import views
 
 urlpatterns = [
     # http://127.0.0.1:8000/
-    path("", views.info),
-    path("index", views.index, name="index"),
+    path("", views.info, name="index"),
+    path("index", views.index, name="login"),
     path("joinForm/", views.joinForm),
     path("join/", views.join),
     path("login/", views.login),

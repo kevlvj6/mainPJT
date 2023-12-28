@@ -39,7 +39,7 @@ def join(request) :
                     user_name = name,
                     user_img  = 'boy.jpg')
     user.save()
-    return redirect('index')
+    return redirect('login')
 
 def login(request) :
     print('debug >>> mainApp/login')
@@ -73,7 +73,7 @@ def logout(request):
     request.session['session_img']     = {}
     request.session['session_user_id'] = {}
     request.session.flush()
-    return redirect('index')
+    return redirect('login')
 
 def main(request):
     print('debug >>>> mainApp /main')
